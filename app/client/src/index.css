@@ -1,0 +1,30 @@
+/* Roboto */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+/* Exo 2 */
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@100;200;300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+html {
+  color: white;
+  /* background-color: rgb(9 9 11); */
+  height: 100vh;
+}
+
+:root {
+}
+
+@keyframes slide {
+}
+
+@layer components {
+}
