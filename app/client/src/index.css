@@ -16,15 +16,25 @@
 
 html {
   color: white;
-  /* background-color: rgb(9 9 11); */
+  background-image: url('/background/mesh-gradients.png');
+  background-color: #070707;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
   height: 100vh;
 }
 
 :root {
-}
-
-@keyframes slide {
+  --screen-size: 1440;
+  --outer-gutter: 80;
+  --base-outer-gutter-percentage: calc(
+    var(--outer-gutter) / var(--screen-size) * 100vw
+  );
 }
 
 @layer components {
+  .p-side {
+    padding-left: var(--base-outer-gutter-percentage);
+    padding-right: var(--base-outer-gutter-percentage);
+  }
 }

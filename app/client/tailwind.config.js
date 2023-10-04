@@ -5,7 +5,7 @@ export default {
     extend: {
       fontFamily: {
         roboto: ['Roboto', 'sans-serif'],
-        exo: ['Exo 2', 'sans-serif'],
+        exo: ['"Exo 2"', 'sans-serif'],
       },
       screens: {
         wide: '1440px',
@@ -13,6 +13,7 @@ export default {
       colors: {
         // Red colors:
         'red-light': '#EF4444',
+        'red-light-dark': '#C83535',
         'red-md': '#402525',
         'red-dark': '#191414',
         // Dark Grays colors:
