@@ -12,7 +12,7 @@ const Navbar = () => {
 
   useClickOutside(menuRef, () => setShowMenu(false));
   return (
-    <nav className="flex justify-between items-center max-w-screen-wide mx-auto">
+    <nav className="w-full flex justify-between items-center max-w-screen-wide mx-auto">
       <Logo />
       <div className="flex items-center gap-6">
         {navigation.map((link) => (
