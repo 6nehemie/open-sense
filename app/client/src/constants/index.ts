@@ -37,7 +37,7 @@ export const coursesFeatured = {
       label: 'Chart Maestro',
       slogan: 'Navigating The Nuances Of Numbers',
       duration: '38 hours',
-      imageSrc: '/courses/course-5.png',
+      imageSrc: '/courses/course-4.png',
     },
     {
       label: 'Entrepreneur 101',
