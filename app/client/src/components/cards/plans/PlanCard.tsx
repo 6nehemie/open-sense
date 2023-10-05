@@ -23,7 +23,7 @@ const PlanCard: React.FC<PlanCardProps> = ({
 }) => {
   return (
     <div
-      className={`relative flex flex-col font-exo gap-5 max-w-[416px] h-[602px] w-full p-5 rounded-xl overflow-hidden
+      className={`relative flex flex-col font-exo gap-5 max-w-[416px] min-h-[602px] w-full p-5 rounded-xl overflow-hidden
 	${label === 'Monthly Maven' ? 'bg-cool-gray' : ''}
 	${label === 'Yearly Elite' ? 'bg-red-md' : ''}
 	${label === 'Semi-Annual Specialist' ? 'bg-red-dark' : ''}
@@ -32,7 +32,7 @@ const PlanCard: React.FC<PlanCardProps> = ({
     >
       <div className="flex items-center justify-between">
         <h4 className="text-2xl font-roboto font-semibold">{label}</h4>
-        <p>{duration}</p>
+        <p className="whitespace-nowrap">{duration}</p>
       </div>
 
       <p className="font-light leading-tight">{description}</p>
@@ -66,7 +66,7 @@ const PlanCard: React.FC<PlanCardProps> = ({
 
       <Link
         to={'.'}
-        className="absolute left-5 bottom-5 w-max transition-colors duration-200 bg-red-light px-7 py-2 rounded-full hover:bg-red-light-dark hover:text-white"
+        className=" mt-auto w-max transition-colors duration-200 bg-red-light px-7 py-2 rounded-full hover:bg-red-light-dark hover:text-white"
       >
         Sign Up
       </Link>
