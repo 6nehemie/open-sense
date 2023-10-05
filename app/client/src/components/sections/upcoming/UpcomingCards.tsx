@@ -4,8 +4,8 @@ import { Newsletter } from '../..';
 
 const UpcomingCards = () => {
   return (
-    <div>
-      <div className="flex gap-[21px]">
+    <div className="relative h-[302px] overflow-x-scroll">
+      <div className="absolute flex gap-[21px] ">
         {events.featured.map((event) => (
           <EventsCard
             date={event.date}
