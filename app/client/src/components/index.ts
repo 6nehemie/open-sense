@@ -14,3 +14,4 @@ export { default as Reviews } from './sections/reviews/Reviews';
 export { default as PlanCard } from './cards/plans/PlanCard';
 export { default as ReviewCard } from './cards/reviews/ReviewCard';
 export { default as Footer } from './footer/Footer';
+export { default as CustomNavbar } from './navbar/CustomNavbar';
