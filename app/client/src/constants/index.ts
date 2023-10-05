@@ -53,13 +53,13 @@ export const events = {
   featured: [
     {
       date: 'December 12',
-      imageSrc: '/events/event-1.png',
+      imageSrc: '/events/event-2.png',
       label: 'Live Cooking Class',
       text: 'December is a busy month join us to prepare nice dish.',
     },
     {
       date: 'December 23',
-      imageSrc: '/events/event-2.png',
+      imageSrc: '/events/event-1.png',
       label: 'Podcast Interview',
       text: 'Meet one of our successful alumni and learn his story.',
     },

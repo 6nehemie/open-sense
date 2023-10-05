@@ -1,4 +1,4 @@
-import { Navbar, Hero, Featured } from '../components';
+import { Navbar, Hero, Featured, Upcoming, Prices } from '../components';
 
 const Landing = () => {
   return (
@@ -8,10 +8,9 @@ const Landing = () => {
         <Hero />
       </header>
 
-      <div className="">
-        <Featured />
-      </div>
-      <h1>test</h1>
+      <Featured />
+      <Upcoming />
+      <Prices />
     </div>
   );
 };
