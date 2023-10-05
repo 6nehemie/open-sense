@@ -10,4 +10,3 @@ export { default as EventsCards } from './cards/events/EventsCard';
 export { default as UpcomingCards } from './sections/upcoming/UpcomingCards';
 export { default as Newsletter } from './buttons/Newsletter';
 export { default as Prices } from './sections/prices/Prices';
-export { default as PlanCard } from './cards/plans/planCard';
