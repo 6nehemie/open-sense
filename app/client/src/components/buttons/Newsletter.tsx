@@ -1,6 +1,6 @@
 const NewsletterBtn = () => {
   return (
-    <form>
+    <form className="">
       <div className="flex font-exo font-light border-2 border-light-gray py-2 px-2 rounded-full">
         <label htmlFor="newsletter"></label>
         <input
@@ -8,7 +8,7 @@ const NewsletterBtn = () => {
           type="email"
           name="newsletter"
           required
-          className="bg-transparent placeholder-white outline-none w-full max-w-[235px] mr-1 pl-3"
+          className="bg-transparent placeholder-white outline-none w-full max-w-[300px] mr-1 pl-3"
         />
         <button
           type="submit"

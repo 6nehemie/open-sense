@@ -43,7 +43,7 @@ const CourseCards = () => {
             </button>
           </div>
 
-          <h2 className="w-full text-xl font-roboto font-normal text-right">
+          <h2 className="w-full heading-2 font-roboto text-right">
             {coursesFeatured.titleLanding}
           </h2>
         </div>

@@ -6,7 +6,7 @@ const Prices = () => {
     <section className="p-side">
       <div className="flex flex-col items-center w-full max-w-screen-wide mx-auto">
         <h2 className="heading-2 mb-2">{subscriptionsPlans.label}</h2>
-        <h3 className="heading-3 text-center mb-16">
+        <h3 className="heading-3 text-center mb-10">
           All membership plans come with a{' '}
           <span className="font-semibold">30-day satisfaction guarantee.</span>
         </h3>

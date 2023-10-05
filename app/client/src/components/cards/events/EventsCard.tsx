@@ -15,6 +15,8 @@ const EventsCard: React.FC<EventsCardProps> = ({
     <div className="relative h-[302px] w-[562px] rounded-xl overflow-hidden">
       <img
         src={imageSrc}
+        height={302}
+        width={562}
         alt="background image"
         className="absolute object-cover z-[-1] h-full w-full"
       />

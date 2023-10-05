@@ -10,3 +10,7 @@ export { default as EventsCards } from './cards/events/EventsCard';
 export { default as UpcomingCards } from './sections/upcoming/UpcomingCards';
 export { default as Newsletter } from './buttons/Newsletter';
 export { default as Prices } from './sections/prices/Prices';
+export { default as Reviews } from './sections/reviews/Reviews';
+export { default as PlanCard } from './cards/plans/PlanCard';
+export { default as ReviewCard } from './cards/reviews/ReviewCard';
+export { default as Footer } from './footer/Footer';

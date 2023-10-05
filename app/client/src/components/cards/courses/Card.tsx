@@ -14,6 +14,8 @@ const Card: React.FC<CardProps> = ({ label, slogan, duration, imageSrc }) => {
     >
       <img
         src={imageSrc}
+        height={379}
+        width={271}
         alt={`Image preview of ${coursesFeatured.courses[0].label}`}
         className="absolute z-[-2] h-full object-cover"
       />

@@ -74,12 +74,40 @@ body {
     }
   }
 
+  .footer-pt {
+    padding-top: 240px;
+
+    @media only screen and (max-width: 1680px) {
+      padding-top: 210px;
+    }
+
+    @media only screen and (max-width: 1540px) {
+      padding-top: 200px;
+    }
+
+    @media only screen and (max-width: 1280px) {
+      padding-top: 180px;
+    }
+
+    @media only screen and (max-width: 1024px) {
+      padding-top: 160px;
+    }
+
+    @media only screen and (max-width: 768px) {
+      padding-top: 140px;
+    }
+
+    @media only screen and (max-width: 640px) {
+      padding-top: 120px;
+    }
+  }
+
   /* Headings */
   .heading-2 {
     font-size: 28px;
     font-family: 'Roboto', sans-serif;
     font-weight: 500;
-    margin-bottom: 20px;
+    margin-bottom: 12px;
 
     @media only screen and (max-width: 1512px) {
       font-size: 26px;
@@ -127,5 +155,10 @@ body {
   /* Hide scrollbar for Firefox */
   .no-scrollbar {
     scrollbar-width: none;
+  }
+
+  /* Progressive transition color to black */
+  .bg-to-dark {
+    background: linear-gradient(to bottom, transparent, #070707);
   }
 }
