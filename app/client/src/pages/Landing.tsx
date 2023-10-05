@@ -8,7 +8,7 @@ const Landing = () => {
         <Hero />
       </header>
 
-      <div className="p-side">
+      <div className="">
         <Featured />
       </div>
       <h1>test</h1>
