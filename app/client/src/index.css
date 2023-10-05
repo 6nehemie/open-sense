@@ -76,21 +76,21 @@ body {
 
   /* Headings */
   .heading-2 {
-    font-size: 32px;
+    font-size: 28px;
     font-family: 'Roboto', sans-serif;
     font-weight: 500;
     margin-bottom: 30px;
 
     @media only screen and (max-width: 1512px) {
-      font-size: 28px;
-    }
-
-    @media only screen and (max-width: 1024px) {
       font-size: 26px;
     }
 
-    @media only screen and (max-width: 640px) {
+    @media only screen and (max-width: 1024px) {
       font-size: 24px;
+    }
+
+    @media only screen and (max-width: 640px) {
+      font-size: 22px;
     }
   }
 
@@ -98,5 +98,15 @@ body {
   .card-gradient {
     background: linear-gradient(to top, black, transparent);
     opacity: 0.7;
+  }
+
+  /* Hides horizontal scroll bar */
+  .no-scrollbar::-webkit-scrollbar {
+    height: 0;
+  }
+
+  /* Hide scrollbar for Firefox */
+  .no-scrollbar {
+    scrollbar-width: none;
   }
 }
