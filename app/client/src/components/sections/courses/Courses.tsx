@@ -1,7 +1,11 @@
 import { coursesFeatured } from '../../../constants';
 import { Card } from '../..';
 import { useRef } from 'react';
-import { ArrowLeftIcon, ArrowRightIcon } from '@heroicons/react/20/solid';
+// import { ArrowLeftIcon, ArrowRightIcon } from '@heroicons/react/20/solid';
+import {
+  ArrowLongLeftIcon,
+  ArrowLongRightIcon,
+} from '@heroicons/react/24/outline';
 
 const Courses = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -32,18 +36,20 @@ const Courses = () => {
 
   return (
     <div>
-      {/* <div className="p-side">
+      <div className="p-side">
         <div className="flex flex-col justify-between max-w-screen-wide w-full mx-auto mb-4">
           <div className="max-md:hidden lg:visible min-[1620px]:hidden flex gap-6">
             <button onClick={handleScrollLeft}>
-              <ArrowLeftIcon className="h-7 aspect-square p-1 border-2 rounded-full bg-light-gray bg-opacity-10 border-light-gray border-opacity-10 transition-all duration-200 text-light-gray hover:border-light-gray hover:text-white" />
+              <ArrowLongLeftIcon className="h-7 aspect-square p-1 border-2 rounded-full bg-light-gray bg-opacity-10 border-light-gray border-opacity-10 transition-all duration-200 text-light-gray hover:border-light-gray hover:text-white" />
             </button>
             <button onClick={handleScrollRight}>
-              <ArrowRightIcon className="h-7 aspect-square p-1 border-2 rounded-full bg-light-gray bg-opacity-10 border-light-gray border-opacity-10 transition-all duration-200 text-light-gray hover:border-light-gray hover:text-white" />
+              <ArrowLongRightIcon className="h-7 aspect-square p-1 border-2 rounded-full bg-light-gray bg-opacity-10 border-light-gray border-opacity-10 transition-all duration-200 text-light-gray hover:border-light-gray hover:text-white" />
             </button>
           </div>
         </div>
-      </div> */}
+      </div>
+
+      {/* //? Courses */}
       <div className="relative">
         <div
           ref={containerRef}

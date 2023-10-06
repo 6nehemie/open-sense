@@ -1,14 +1,26 @@
 import { Link } from 'react-router-dom';
 import { Logo } from '..';
 import { user } from '../../constants';
-import { Cog6ToothIcon, UserIcon } from '@heroicons/react/24/outline';
+import {
+  ArrowRightOnRectangleIcon,
+  Cog6ToothIcon,
+  HomeIcon,
+  UserIcon,
+} from '@heroicons/react/24/outline';
+import { useRef, useState } from 'react';
+import { useClickOutside } from '../../hooks';
 
 const DashboardNavbar: React.FC = () => {
+  const [openMenu, setOpenMenu] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+
+  useClickOutside(menuRef, () => setOpenMenu(false));
+
   return (
-    <div className="fixed top-0 w-full p-side">
+    <div className="fixed top-0 w-full p-side z-50">
       <nav
         className={`relative flex justify-between items-center max-w-screen-wide mx-auto
-	pt-14 max-lg:pt-10 max-sm:pt-8 font-exo
+	pt-14 max-lg:pt-10 max-sm:pt-8 font-exo z-50
   `}
       >
         <Link to={'/browse'}>
@@ -19,6 +31,7 @@ const DashboardNavbar: React.FC = () => {
             Hi, {user.name}.
           </p>
           <div
+            onClick={() => setOpenMenu(!openMenu)}
             className={`flex items-center justify-center h-12 w-12 aspect-square rounded-full bg-dark-gray overflow-hidden mr-2
 		 ${
        !user.avatar
@@ -40,18 +53,34 @@ const DashboardNavbar: React.FC = () => {
             )}
           </div>
         </div>
-        <div className="absolute top-32 z-[1000] right-0 bg-light-gray bg-opacity-10 border-2 border-light-gray border-opacity-10 rounded-lg w-full max-w-[220px] ">
+
+        {/* //? MENU  */}
+        <div
+          ref={menuRef}
+          className={`absolute top-32 max-lg:top-28 max-sm:top-24 z-50 right-0 bg-dark-gray bg-opacity-50 border-2 border-light-gray border-opacity-10 rounded-lg w-full max-w-[220px] backdrop-blur-lg
+		  ${openMenu ? 'opacity-100 visible' : 'opacity-0 invisible'} 
+		  `}
+        >
+          <Link
+            to={'.'}
+            onClick={() => setOpenMenu(false)}
+            className="text-md font-light flex items-center gap-3 py-2 px-4 w-full h-full hover:bg-neutral-800 bg-opacity-80 rounded-lg transition-colors duration-200"
+          >
+            <HomeIcon className="h-6" /> <span>Home</span>
+          </Link>
           <Link
             to={'settings'}
-            className="text-md font-light flex items-center gap-2 py-2 px-4 w-full h-full hover:bg-dark-gray bg-opacity-60 rounded-lg transition-colors duration-200"
+            onClick={() => setOpenMenu(false)}
+            className="text-md font-light flex items-center gap-3 py-2 px-4 w-full h-full hover:bg-neutral-800 bg-opacity-80 rounded-lg transition-colors duration-200"
           >
             <Cog6ToothIcon className="h-6" /> <span>Settings</span>
           </Link>
           <Link
-            to={'/login'}
-            className="text-md font-light flex items-center gap-2 py-2 px-4 w-full h-full hover:bg-dark-gray bg-opacity-60 rounded-lg transition-colors duration-200"
+            to={'/sign-in'}
+            onClick={() => setOpenMenu(false)}
+            className="text-md font-light flex items-center gap-3 py-2 px-4 w-full h-full hover:bg-neutral-800 bg-opacity-80 rounded-lg transition-colors duration-200 text-red-light"
           >
-            <Cog6ToothIcon className="h-6" /> <span>Settings</span>
+            <ArrowRightOnRectangleIcon className="h-6" /> <span>Log Out</span>
           </Link>
         </div>
       </nav>
