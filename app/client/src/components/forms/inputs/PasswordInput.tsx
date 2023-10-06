@@ -8,12 +8,7 @@ interface InputProps {
   name: string;
 }
 
-const PasswordInput: React.FC<InputProps> = ({
-  label,
-  placeholder,
-  error,
-  name,
-}) => {
+const PasswordInput: React.FC<InputProps> = ({ label, placeholder, name }) => {
   const [showPassword, setShowPassword] = useState(false);
   return (
     <div className="flex flex-col gap-1">
@@ -27,7 +22,10 @@ const PasswordInput: React.FC<InputProps> = ({
           className="border-2 border-light-gray rounded-lg py-3 px-2 outline-none w-full"
         />
 
-        <div className="absolute top-[14px] right-3 text-light-gray hover:text-dark-gray transition-colors duration-200 cursor-pointer" onClick={() => setShowPassword((prev) => !prev)}>
+        <div
+          className="absolute top-[14px] right-3 text-light-gray hover:text-dark-gray transition-colors duration-200 cursor-pointer"
+          onClick={() => setShowPassword((prev) => !prev)}
+        >
           {!showPassword ? (
             <EyeIcon className="h-6" />
           ) : (

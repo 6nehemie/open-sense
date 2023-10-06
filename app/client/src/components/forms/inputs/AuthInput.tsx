@@ -10,7 +10,6 @@ const AuthInput: React.FC<InputProps> = ({
   label,
   type,
   placeholder,
-  error,
   name,
 }) => {
   return (
