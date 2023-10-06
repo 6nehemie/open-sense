@@ -246,3 +246,9 @@ export const auth = {
     text: "Step into a world of endless possibilities and knowledge. Let's embark on this learning adventure together.",
   },
 };
+
+export const user = {
+  name: "Liam O'Connell",
+  email: 'liam-o.connell@test.com',
+  avatar: '/users/user-1.png',
+};

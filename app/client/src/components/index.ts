@@ -19,3 +19,4 @@ export { default as AuthWrapper } from './auth/AuthWrapper';
 export { default as AuthInput } from './forms/inputs/AuthInput';
 export { default as PasswordInput } from './forms/inputs/PasswordInput';
 export { default as AuthSubmitBtn } from './forms/buttons/AuthSubmitBtn';
+export { default as Courses } from './sections/courses/Courses';

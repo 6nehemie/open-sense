@@ -5,3 +5,4 @@ export { default as Login } from './Login';
 export { default as Plans } from './Plans';
 export { default as Settings } from './Settings';
 export { default as SignUp } from './SignUp';
+export { default as DashboardLayout } from './DashboardLayout';
