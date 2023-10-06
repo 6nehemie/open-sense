@@ -61,6 +61,10 @@ body {
     } */
   }
 
+  .dashboard-grid {
+    grid-template-rows: minmax(1fr) max-content 1fr;
+  }
+
   /* Gap layout */
   .gap-layout {
     gap: 240px;
@@ -176,5 +180,11 @@ body {
   /* Progressive transition color to black */
   .bg-to-dark {
     background: linear-gradient(to bottom, transparent, #070707);
+  }
+
+  .hide-on-height {
+    @media only screen and (max-height: 864px) {
+      display: none;
+    }
   }
 }

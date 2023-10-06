@@ -36,26 +36,28 @@ const Courses = () => {
 
   return (
     <div>
-      <div className="p-side">
+      <div className="p-side flex flex-col">
         <div className="flex flex-col justify-between max-w-screen-wide w-full mx-auto mb-4">
           <div className="max-md:hidden lg:visible min-[1620px]:hidden flex gap-6">
+            {/* //? BTN LEFT */}
             <button onClick={handleScrollLeft}>
               <ArrowLongLeftIcon className="h-7 aspect-square p-1 border-2 rounded-full bg-light-gray bg-opacity-10 border-light-gray border-opacity-10 transition-all duration-200 text-light-gray hover:border-light-gray hover:text-white" />
             </button>
+
+            {/* //? BTN RIGHT */}
             <button onClick={handleScrollRight}>
               <ArrowLongRightIcon className="h-7 aspect-square p-1 border-2 rounded-full bg-light-gray bg-opacity-10 border-light-gray border-opacity-10 transition-all duration-200 text-light-gray hover:border-light-gray hover:text-white" />
             </button>
           </div>
         </div>
       </div>
-
       {/* //? Courses */}
-      <div className="relative">
+      <div className="w-screen">
         <div
           ref={containerRef}
-          className="no-scrollbar h-[400px] overflow-x-hidden min-[1620px]:max-w-screen-wide min-[1620px]:mx-auto max-[1620px]:overflow-x-scroll"
+          className="relative no-scrollbar h-[400px] overflow-x-hidden min-[1620px]:max-w-screen-wide min-[1620px]:mx-auto max-[1620px]:overflow-x-scroll"
         >
-          <div className="flex gap-[21px] max-[1620px]:p-side ">
+          <div className=" absolute flex gap-[21px] max-[1620px]:p-side">
             {coursesFeatured.courses.map((course) => (
               <Card
                 key={course.label}
