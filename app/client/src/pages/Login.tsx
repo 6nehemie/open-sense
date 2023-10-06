@@ -10,8 +10,8 @@ import { auth } from '../constants';
 
 const Login = () => {
   return (
-    <div className="relative h-screen p-side flex items-center justify-center">
-      <CustomNavbar label="Sign Up" href="/sign-up" logoHref="/" />
+    <div className="relative h-screen p-side flex items-center justify-center max-md:bg-white">
+      <CustomNavbar label="Sign Up" href="/sign-up" logoHref="/" light={true} />
 
       <div className="w-full flex items-center justify-center">
         <AuthWrapper label={auth.login.label} message={auth.login.text}>

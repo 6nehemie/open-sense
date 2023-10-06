@@ -4,15 +4,17 @@ interface Props {
   label: string;
   href: string;
   logoHref: string;
+  light?: boolean;
 }
 
-const CustomNavbar: React.FC<Props> = ({ label, href, logoHref }) => {
+const CustomNavbar: React.FC<Props> = ({ label, href, logoHref, light }) => {
   return (
     <div className="absolute top-0 w-full p-side">
       <nav
-        className="flex justify-between items-center max-w-screen-wide mx-auto
+        className={`flex justify-between items-center max-w-screen-wide mx-auto
 	pt-14 max-lg:pt-10 max-sm:pt-8 font-exo
-	"
+    ${light ? 'text-white max-md:text-dark-gray' : ''}
+  `}
       >
         <Link to={logoHref}>
           <Logo />
