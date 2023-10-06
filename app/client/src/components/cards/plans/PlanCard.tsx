@@ -23,7 +23,7 @@ const PlanCard: React.FC<PlanCardProps> = ({
 }) => {
   return (
     <div
-      className={`relative flex flex-col font-exo gap-5 max-w-[416px] min-h-[602px] w-full p-5 rounded-xl overflow-hidden
+      className={`relative flex flex-col font-exo gap-5 max-[1660px]:gap-4 max-w-[416px] min-h-[602px] max-[1660px]:min-h-[550px] w-full p-5 rounded-xl overflow-hidden
 	${label === 'Monthly Maven' ? 'bg-cool-gray' : ''}
 	${label === 'Yearly Elite' ? 'bg-red-md' : ''}
 	${label === 'Semi-Annual Specialist' ? 'bg-red-dark' : ''}
@@ -31,22 +31,27 @@ const PlanCard: React.FC<PlanCardProps> = ({
 	`}
     >
       <div className="flex items-center justify-between">
-        <h4 className="text-2xl font-roboto font-semibold">{label}</h4>
-        <p className="whitespace-nowrap">{duration}</p>
+        <h4 className="text-2xl max-[1660px]:text-xl font-roboto font-semibold">
+          {label}
+        </h4>
+        <p className="whitespace-nowrap max-[1660px]:text-sm">{duration}</p>
       </div>
 
-      <p className="font-light leading-tight">{description}</p>
+      <p className="font-light leading-tight max-[1660px]:text-sm">
+        {description}
+      </p>
 
       <p className="leading-none">
-        <span className="text-[48px]">{price}</span> /month
+        <span className="text-[48px] max-[1660px]:text-[42px]">{price}</span>{' '}
+        /month
       </p>
       {priceDescription && (
-        <p className="text-light-gray font-light leading-tight">
+        <p className="text-light-gray font-light leading-tight max-[1660px]:text-sm">
           {priceDescription}
         </p>
       )}
       <div className="w-full bg-light-gray h-[.5px]"></div>
-      <div className="text-lg flex flex-col gap-1">
+      <div className="text-lg max-[1660px]:text-base max-[1340px]:text-sm flex flex-col gap-1">
         {access.map((access, index) => (
           <div
             key={index}
@@ -55,9 +60,9 @@ const PlanCard: React.FC<PlanCardProps> = ({
 		  `}
           >
             {access.included ? (
-              <CheckIcon className="h-6" />
+              <CheckIcon className="h-6 max-[1340px]:h-4" />
             ) : (
-              <XMarkIcon className="h-6" />
+              <XMarkIcon className="h-6 max-[1340px]:h-4" />
             )}
             <p>{access.text}</p>
           </div>
@@ -66,7 +71,7 @@ const PlanCard: React.FC<PlanCardProps> = ({
 
       <Link
         to={'.'}
-        className=" mt-auto w-max transition-colors duration-200 bg-red-light px-7 py-2 rounded-full hover:bg-red-light-dark hover:text-white"
+        className="max-[1340px]:text-sm mt-auto w-max transition-colors duration-200 bg-red-light px-7 py-2 rounded-full hover:bg-red-light-dark hover:text-white"
       >
         Sign Up
       </Link>

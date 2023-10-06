@@ -19,7 +19,9 @@ const Landing = () => {
 
         <Featured />
         <Upcoming />
-        <Prices />
+        <div className="p-side">
+          <Prices />
+        </div>
         <Reviews />
       </div>
       <Footer />

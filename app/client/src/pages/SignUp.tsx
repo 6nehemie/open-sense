@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import {
   AuthInput,
   AuthSubmitBtn,
@@ -47,10 +46,6 @@ const SignUp = () => {
             />
 
             <AuthSubmitBtn label="Log In" />
-
-            <Link to={'.'} className="text-center">
-              Forgot your password ?
-            </Link>
           </form>
         </AuthWrapper>
       </div>
