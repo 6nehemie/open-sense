@@ -15,3 +15,7 @@ export { default as PlanCard } from './cards/plans/PlanCard';
 export { default as ReviewCard } from './cards/reviews/ReviewCard';
 export { default as Footer } from './footer/Footer';
 export { default as CustomNavbar } from './navbar/CustomNavbar';
+export { default as AuthWrapper } from './auth/AuthWrapper';
+export { default as AuthInput } from './forms/inputs/AuthInput';
+export { default as PasswordInput } from './forms/inputs/PasswordInput';
+export { default as AuthSubmitBtn } from './forms/buttons/AuthSubmitBtn';

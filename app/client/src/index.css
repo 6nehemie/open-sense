@@ -47,6 +47,11 @@ body {
     padding-right: var(--base-outer-gutter-percentage);
   }
 
+  .p-side-absolute {
+    left: var(--base-outer-gutter-percentage);
+    right: var(--base-outer-gutter-percentage);
+  }
+
   /* Gap layout */
   .gap-layout {
     gap: 240px;
