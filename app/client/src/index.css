@@ -52,6 +52,15 @@ body {
     right: var(--base-outer-gutter-percentage);
   }
 
+  /* Layouts */
+  .login-grid {
+    grid-template-rows: minmax(135px, 1fr) max-content minmax(60px, 1fr);
+
+    /* @media only screen and (max-width: 768px) {
+      grid-template-rows: minmax(135px, 1fr) max-content minmax(60px, 1fr);
+    } */
+  }
+
   /* Gap layout */
   .gap-layout {
     gap: 240px;

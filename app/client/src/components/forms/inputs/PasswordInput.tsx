@@ -6,9 +6,15 @@ interface InputProps {
   placeholder: string;
   error?: boolean;
   name: string;
+  required?: boolean;
 }
 
-const PasswordInput: React.FC<InputProps> = ({ label, placeholder, name }) => {
+const PasswordInput: React.FC<InputProps> = ({
+  label,
+  placeholder,
+  name,
+  required,
+}) => {
   const [showPassword, setShowPassword] = useState(false);
   return (
     <div className="flex flex-col gap-1">
@@ -19,6 +25,7 @@ const PasswordInput: React.FC<InputProps> = ({ label, placeholder, name }) => {
           name={name}
           type={showPassword ? 'text' : 'password'}
           placeholder={placeholder}
+          required={required}
           className="border-2 border-light-gray rounded-lg py-3 px-2 outline-none w-full"
         />
 
