@@ -19,7 +19,7 @@ const DashboardMenu: React.FC<DashboardMenuProps> = ({
   return (
     <div
       ref={menuRef}
-      className={`absolute top-32 max-lg:top-28 max-sm:top-24 z-50 right-0 bg-dark-gray bg-opacity-90 border-2 border-light-gray border-opacity-10 rounded-lg w-full max-w-[220px] backdrop-blur-lg
+      className={`absolute top-32 max-lg:top-28 max-sm:top-24 z-50 right-0 bg-dark-gray bg-opacity-90 border-2 border-light-gray border-opacity-10 rounded-lg w-full max-w-[220px] backdrop-blur-lg text-white
 	${openMenu ? 'opacity-100 visible' : 'opacity-0 invisible'} 
 	`}
     >

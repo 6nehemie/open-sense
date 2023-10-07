@@ -42,7 +42,7 @@ const SettingsInput: React.FC<SettingsInputProps> = ({
           id={name}
           placeholder={placeholder}
           //   required
-          className="font-light border-2 border-light-gray border-opacity-50 py-1 px-3 rounded-md outline-none"
+          className="font-light border-2 border-light-gray border-opacity-50 py-2 px-3 rounded-md outline-none"
         />
       ) : (
         <p className="">{defaultValue}</p>

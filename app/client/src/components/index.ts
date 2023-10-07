@@ -21,3 +21,5 @@ export { default as PasswordInput } from './forms/inputs/PasswordInput';
 export { default as AuthSubmitBtn } from './forms/buttons/AuthSubmitBtn';
 export { default as Courses } from './sections/courses/Courses';
 export { default as SettingsInput } from './forms/inputs/SettingsInput';
+export { default as ChangePasswordInput } from './forms/inputs/ChangePasswordInput';
+export { default as UploadInput } from './forms/inputs/UploadInput';
