@@ -70,22 +70,9 @@ export const validateUpdateUserInput = withValidationErrors([
     .withMessage('Email is invalid')
     .isEmail()
     .withMessage('Invalid email format')
-    .custom(async (email) => {
+    .custom(async (email, { req }) => {
       const user = await User.findOne({ email }); // Using findOne instead of find because we only want to find one user
-      if (user) throw new BadRequestError('Email already exists');
+      if (user && req.user._id === user._id)
+        throw new BadRequestError('Email already exists');
     }),
-  body('password').custom(async (password, { req }) => {
-    if (!(await comparePasswords(password, req.user.password)))
-      throw new BadRequestError('Invalid Password');
-  }),
-  body('newPassword').custom((newPassword, { req }) => {
-    if (!req.body.password) throw new BadRequestError('Password is required');
-    if (password && !password.length !== 8)
-      throw new BadRequestError('Password must be at least 8 characters long');
-  }),
-  body('confirmNewPassword').custom((confirmNewPassword, { req }) => {
-    if (!req.body.password) throw new BadRequestError('Password is required');
-    if (confirmNewPassword !== req.body.newPassword)
-      throw new BadRequestError('Passwords must match');
-  }),
 ]);
