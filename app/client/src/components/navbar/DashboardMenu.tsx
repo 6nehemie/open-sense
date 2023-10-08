@@ -1,9 +1,10 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import {
   ArrowRightOnRectangleIcon,
   Cog6ToothIcon,
   HomeIcon,
 } from '@heroicons/react/24/outline';
+import customFetch from '../../utils/customFetch';
 
 interface DashboardMenuProps {
   openMenu: boolean;
@@ -16,6 +17,17 @@ const DashboardMenu: React.FC<DashboardMenuProps> = ({
   setOpenMenu,
   menuRef,
 }) => {
+  const navigate = useNavigate();
+
+  const logout = async () => {
+    try {
+      await customFetch.get('/auth/log-out');
+      navigate('/sign-in');
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <div
       ref={menuRef}
@@ -37,13 +49,15 @@ const DashboardMenu: React.FC<DashboardMenuProps> = ({
       >
         <Cog6ToothIcon className="h-6" /> <span>Settings</span>
       </Link>
-      <Link
-        to={'/sign-in'}
-        onClick={() => setOpenMenu(false)}
+      <button
+        onClick={() => {
+          logout();
+          setOpenMenu(false);
+        }}
         className="text-md font-light flex items-center gap-3 py-2 px-4 w-full h-full hover:bg-neutral-800 bg-opacity-80 rounded-lg transition-colors duration-200 text-red-light"
       >
         <ArrowRightOnRectangleIcon className="h-6" /> <span>Log Out</span>
-      </Link>
+      </button>
     </div>
   );
 };

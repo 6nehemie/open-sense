@@ -4,7 +4,8 @@ import { useState } from 'react';
 interface InputProps {
   label: string;
   placeholder: string;
-  error?: boolean;
+  defaultValue?: string;
+  error?: string;
   name: string;
   required?: boolean;
 }
@@ -14,6 +15,8 @@ const PasswordInput: React.FC<InputProps> = ({
   placeholder,
   name,
   required,
+  defaultValue,
+  error,
 }) => {
   const [showPassword, setShowPassword] = useState(false);
   return (
@@ -25,8 +28,11 @@ const PasswordInput: React.FC<InputProps> = ({
           name={name}
           type={showPassword ? 'text' : 'password'}
           placeholder={placeholder}
+          defaultValue={defaultValue}
           required={required}
-          className="border-2 border-light-gray rounded-lg py-3 px-2 outline-none w-full"
+          className={`border-2 border-light-gray rounded-lg py-3 px-2 outline-none w-full
+          ${error ? 'border-red-light' : ''}
+          `}
         />
 
         <div
@@ -40,6 +46,7 @@ const PasswordInput: React.FC<InputProps> = ({
           )}
         </div>
       </div>
+      {error && <span className="text-red-light">{error}</span>}
     </div>
   );
 };
