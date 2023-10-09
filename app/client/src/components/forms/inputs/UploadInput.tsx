@@ -1,5 +1,5 @@
 import { ArrowDownTrayIcon, UserIcon } from '@heroicons/react/24/outline';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 interface UploadInputProps {
   user: {
@@ -7,12 +7,18 @@ interface UploadInputProps {
     email: string;
     avatar: string;
   };
+  uploadedFile?: File;
 }
 
-const UploadInput: React.FC<UploadInputProps> = ({ user }) => {
+const UploadInput: React.FC<UploadInputProps> = ({ user, uploadedFile }) => {
   const [fileName, setFileName] = useState<string | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
-  console.log(inputRef.current?.files);
+
+  useEffect(() => {
+    if (uploadedFile) {
+      setFileName(null);
+    }
+  }, [uploadedFile]);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files) return;

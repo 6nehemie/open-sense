@@ -7,13 +7,14 @@ import { updateErrors } from '../utils/errors/updateErrors';
 interface PostInput {
   name: string;
   email: string;
-  avatar?: string;
+  avatar?: File;
   password: string;
 }
 
 const Settings = () => {
   const user = useContext(DashboardContext);
   const updatedData = useActionData() as PostInput;
+  console.log(updatedData);
   const [updateError, setUpdateError] = useState<{
     name: string;
     email: string;
@@ -24,7 +25,7 @@ const Settings = () => {
   const [postInput, setPostInput] = useState<PostInput>({
     name: '',
     email: '',
-    avatar: '',
+    avatar: undefined,
     password: '',
   });
 
@@ -37,11 +38,14 @@ const Settings = () => {
           if (updatedData.name) prev.name = updatedData.name;
           if (updatedData.email) prev.email = updatedData.email;
           if (updatedData.password) prev.password = updatedData.password;
+          if (updatedData.avatar) prev.avatar = updatedData.avatar;
           return prev;
         });
       }
     }
   }, [updatedData]);
+
+  console.log(updatedData.avatar);
 
   return (
     <div className="p-side w-screen pb-12 max-[1183px]:pt-48">
@@ -55,7 +59,7 @@ const Settings = () => {
         >
           <div className="flex flex-col gap-5">
             <h3 className="heading-3 font-normal">My data</h3>
-            <UploadInput user={user} />
+            <UploadInput user={user} uploadedFile={updatedData.avatar} />
             <SettingsInput
               label="Name"
               name="name"
