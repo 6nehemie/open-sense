@@ -21,8 +21,6 @@ const authMiddleware = async (req, res, next) => {
         .json({ message: 'You must be logged into access this resource' });
     }
 
-    console.log(user, token);
-
     req.user = user;
     next();
   } catch (error) {

@@ -2,6 +2,9 @@ import { StatusCodes } from 'http-status-codes';
 import { BadRequestError } from '../errors/customErrors.js';
 import User from '../models/UserModel.js';
 import { comparePasswords, hashPassword } from '../utils/passwordUtils.js';
+import cloudinary from 'cloudinary';
+import * as fs from 'fs/promises';
+import { log } from 'console';
 
 export const getCurrentUser = async (req, res) => {
   try {
@@ -18,6 +21,15 @@ export const updateUser = async (req, res) => {
   const updatedUser = { name: name || req.user.name, email };
 
   try {
+    // Upload to cloudinary
+    if (req.file) {
+      const response = await cloudinary.v2.uploader.upload(req.file.path);
+      // remove the file from the server
+      await fs.unlink(req.file.path);
+      updatedUser.avatar = response.secure_url;
+      updatedUser.avatarId = response.public_id;
+    }
+
     if (password) {
       const validPassword = await comparePasswords(password, req.user.password);
 
@@ -41,11 +53,13 @@ export const updateUser = async (req, res) => {
       updatedUser.password = hashedPassword;
     }
 
-    const user = await User.findByIdAndUpdate(req.user._id, updatedUser, {
-      new: true,
-    });
+    const oldUser = await User.findByIdAndUpdate(req.user._id, updatedUser);
 
-    return res.status(200).json({ user, message: 'User updated successfully' });
+    if (req.file && oldUser.avatarId) {
+      await cloudinary.v2.uploader.destroy(oldUser.avatarId);
+    }
+
+    return res.status(200).json({ message: 'User updated successfully' });
   } catch (error) {
     return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ error });
   }

@@ -1,8 +1,15 @@
-import { ArrowDownTrayIcon } from '@heroicons/react/24/outline';
-import { user } from '../../../constants';
+import { ArrowDownTrayIcon, UserIcon } from '@heroicons/react/24/outline';
 import { useRef, useState } from 'react';
 
-const UploadInput = () => {
+interface UploadInputProps {
+  user: {
+    name: string;
+    email: string;
+    avatar: string;
+  };
+}
+
+const UploadInput: React.FC<UploadInputProps> = ({ user }) => {
   const [fileName, setFileName] = useState<string | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   console.log(inputRef.current?.files);
@@ -24,7 +31,9 @@ const UploadInput = () => {
         <div>
           {fileName && (
             <div className="flex items-end gap-4">
-              <button className="mt-2">Submit</button>
+              <button type="submit" className="mt-2">
+                Submit
+              </button>
               <p
                 className="text-red-light cursor-pointer"
                 onClick={handleCancel}
@@ -37,13 +46,19 @@ const UploadInput = () => {
       </div>
       <div className="flex items-center justify-between">
         <div className="rounded-full h-12 w-12 aspect-square overflow-hidden">
-          <img
-            src={user.avatar}
-            alt={`Profile image of ${user.name}`}
-            height={60}
-            width={60}
-            className="object-cover"
-          />
+          {user.avatar ? (
+            <img
+              src={user.avatar}
+              alt={`Profile image of ${user.name}`}
+              height={60}
+              width={60}
+              className="object-cover"
+            />
+          ) : (
+            <div className="bg-light-gray h-full w-full aspect-square flex items-center justify-center">
+              <UserIcon className="h-6 text-white" />
+            </div>
+          )}
         </div>
         <div className="flex flex-col items-end">
           <div className=" hover:text-red-light transition-colors duration-200">
@@ -59,6 +74,7 @@ const UploadInput = () => {
               id="avatar"
               name="avatar"
               type="file"
+              accept="image/*"
               className="hidden"
               onChange={handleFileChange}
             />

@@ -5,11 +5,12 @@ import { createContext } from 'react';
 export const DashboardContext = createContext({
   name: '',
   email: '',
+  avatar: '',
 });
 interface User {
   name: string;
   email: string;
-  avatar?: string | undefined;
+  avatar: string;
 }
 
 const DashboardLayout = () => {

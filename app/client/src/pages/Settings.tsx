@@ -48,12 +48,14 @@ const Settings = () => {
       <div className="max-w-screen-wide w-full mx-auto">
         <h2 className="heading-2">Settings</h2>
         <Form
-          method="post"
+          method="patch"
+          // encType="multipart/form-data" // Really important for uploading files!!!!!!!!!!!!!
+          encType="multipart/form-data"
           className="p-14 max-lg:p-10 max-md:p-6 max-sm:p-0 bg-white font-exo text-dark-gray rounded-xl w-full grid grid-cols-2 max-[1183px]:grid-cols-1 gap-8"
         >
           <div className="flex flex-col gap-5">
             <h3 className="heading-3 font-normal">My data</h3>
-            <UploadInput />
+            <UploadInput user={user} />
             <SettingsInput
               label="Name"
               name="name"
@@ -63,6 +65,7 @@ const Settings = () => {
               type="text"
               defaultValue={user.name}
             />
+
             <SettingsInput
               label="Email"
               name="email"
