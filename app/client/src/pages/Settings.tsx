@@ -1,35 +1,86 @@
+import { useContext, useEffect, useState } from 'react';
 import { ChangePasswordInput, SettingsInput, UploadInput } from '../components';
-import { user } from '../constants';
+import { DashboardContext } from './DashboardLayout';
+import { Form, useActionData } from 'react-router-dom';
+import { updateErrors } from '../utils/errors/updateErrors';
+
+interface PostInput {
+  name: string;
+  email: string;
+  avatar?: string;
+  password: string;
+}
 
 const Settings = () => {
+  const user = useContext(DashboardContext);
+  const updatedData = useActionData() as PostInput;
+  const [updateError, setUpdateError] = useState<{
+    name: string;
+    email: string;
+    password: string;
+    newPassword: string;
+    confirmPassword: string;
+  }>();
+  const [postInput, setPostInput] = useState<PostInput>({
+    name: '',
+    email: '',
+    avatar: '',
+    password: '',
+  });
+
+  useEffect(() => {
+    if (updatedData) {
+      if (typeof updatedData === 'string') {
+        setUpdateError(updateErrors(updatedData));
+      } else {
+        setPostInput((prev) => {
+          if (updatedData.name) prev.name = updatedData.name;
+          if (updatedData.email) prev.email = updatedData.email;
+          if (updatedData.password) prev.password = updatedData.password;
+          return prev;
+        });
+      }
+    }
+  }, [updatedData]);
+
   return (
     <div className="p-side w-screen pb-12 max-[1183px]:pt-48">
       <div className="max-w-screen-wide w-full mx-auto">
         <h2 className="heading-2">Settings</h2>
-        <form className="p-14 max-lg:p-10 max-md:p-6 max-sm:p-0 bg-white font-exo text-dark-gray rounded-xl w-full grid grid-cols-2 max-[1183px]:grid-cols-1 gap-8">
+        <Form
+          method="post"
+          className="p-14 max-lg:p-10 max-md:p-6 max-sm:p-0 bg-white font-exo text-dark-gray rounded-xl w-full grid grid-cols-2 max-[1183px]:grid-cols-1 gap-8"
+        >
           <div className="flex flex-col gap-5">
             <h3 className="heading-3 font-normal">My data</h3>
             <UploadInput />
             <SettingsInput
               label="Name"
               name="name"
+              newValue={postInput.name}
               placeholder="Your name"
+              error={updateError?.name}
               type="text"
               defaultValue={user.name}
             />
             <SettingsInput
               label="Email"
               name="email"
+              newValue={postInput.email}
               placeholder="Your email"
+              error={updateError?.email}
               type="email"
               defaultValue={user.email}
             />
           </div>
           <div className="flex flex-col gap-5">
             <h3 className="heading-3 font-normal">Security</h3>
-            <ChangePasswordInput />
+            <ChangePasswordInput
+              errorObject={updateError}
+              newValue={postInput.password}
+            />
           </div>
-        </form>
+        </Form>
       </div>
     </div>
   );

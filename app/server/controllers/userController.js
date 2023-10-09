@@ -3,9 +3,19 @@ import { BadRequestError } from '../errors/customErrors.js';
 import User from '../models/UserModel.js';
 import { comparePasswords, hashPassword } from '../utils/passwordUtils.js';
 
+export const getCurrentUser = async (req, res) => {
+  try {
+    const user = await User.findById(req.user._id).select('-password');
+
+    return res.status(200).json(user);
+  } catch (error) {
+    return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ error });
+  }
+};
+
 export const updateUser = async (req, res) => {
   const { name, email, password, newPassword, confirmPassword } = req.body;
-  const updatedUser = { name, email };
+  const updatedUser = { name: name || req.user.name, email };
 
   try {
     if (password) {

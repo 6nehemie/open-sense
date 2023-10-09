@@ -13,8 +13,10 @@ const UserSchema = new mongoose.Schema({
   avatarId: String,
 });
 
-// UserSchema.methods.toJSON = function () {
-//   return this.toObject();
-// };
+UserSchema.methods.toJSON = function () {
+  let obj = this.toObject();
+  delete obj.password;
+  return obj;
+};
 
 export default mongoose.model('User', UserSchema);

@@ -1,7 +1,28 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
-const ChangePasswordInput: React.FC = () => {
+interface ChangePasswordInputProps {
+  errorObject?: {
+    name: string;
+    email: string;
+    password: string;
+    newPassword: string;
+    confirmPassword: string;
+  };
+  newValue?: string;
+}
+
+const ChangePasswordInput: React.FC<ChangePasswordInputProps> = ({
+  errorObject,
+  newValue,
+}) => {
   const [edit, setEdit] = useState(false);
+  console.log(newValue);
+
+  useEffect(() => {
+    if (newValue) {
+      setEdit(false);
+    }
+  }, [newValue]);
 
   return (
     <div className="flex flex-col gap-6">
@@ -21,14 +42,21 @@ const ChangePasswordInput: React.FC = () => {
       </div>
 
       {edit ? (
-        <input
-          type="password"
-          name="password"
-          id="password"
-          placeholder="Your password"
-          //   required
-          className="font-light border-2 border-light-gray border-opacity-50 py-2 px-3 rounded-md outline-none"
-        />
+        <>
+          <input
+            type="password"
+            name="password"
+            id="password"
+            placeholder="Your password"
+            //   required
+            className={`font-light border-2 border-light-gray border-opacity-50 py-2 px-3 rounded-md outline-none
+            ${errorObject?.password ? 'border-red-light' : ''}
+            `}
+          />
+          {errorObject?.password && edit && (
+            <span className="text-red-light">{errorObject?.password}</span>
+          )}
+        </>
       ) : (
         <p className="">********</p>
       )}
@@ -41,8 +69,13 @@ const ChangePasswordInput: React.FC = () => {
             id="newPassword"
             placeholder="Your new password"
             //   required
-            className="font-light border-2 border-light-gray border-opacity-50 py-2 px-3 rounded-md outline-none"
+            className={`font-light border-2 border-light-gray border-opacity-50 py-2 px-3 rounded-md outline-none
+            ${errorObject?.newPassword ? 'border-red-light' : ''}
+            `}
           />
+          {errorObject?.newPassword && edit && (
+            <span className="text-red-light">{errorObject?.newPassword}</span>
+          )}
         </>
       )}
       {edit && (
@@ -54,8 +87,15 @@ const ChangePasswordInput: React.FC = () => {
             id="confirmPassword"
             placeholder="Confirm your new password"
             //   required
-            className="font-light border-2 border-light-gray border-opacity-50 py-2 px-3 rounded-md outline-none"
+            className={`font-light border-2 border-light-gray border-opacity-50 py-2 px-3 rounded-md outline-none
+            ${errorObject?.confirmPassword ? 'border-red-light' : ''}
+            `}
           />
+          {errorObject?.confirmPassword && edit && (
+            <span className="text-red-light">
+              {errorObject?.confirmPassword}
+            </span>
+          )}
         </>
       )}
 

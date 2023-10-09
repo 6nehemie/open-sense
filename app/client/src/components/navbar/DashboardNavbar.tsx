@@ -1,16 +1,19 @@
 import { Link } from 'react-router-dom';
 import { Logo } from '..';
-import { user } from '../../constants';
+// import { user } from '../../constants';
 import { UserIcon } from '@heroicons/react/24/outline';
-import { useRef, useState } from 'react';
+import { useContext, useRef, useState } from 'react';
 import { useClickOutside } from '../../hooks';
 import DashboardMenu from './DashboardMenu';
+import { DashboardContext } from '../../pages/DashboardLayout';
 
 const DashboardNavbar: React.FC = () => {
+  const user = useContext(DashboardContext);
   const [openMenu, setOpenMenu] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
 
   useClickOutside(menuRef, () => setOpenMenu(false));
+
   return (
     <div className="fixed top-0 w-full p-side pb-6 z-50">
       <nav
@@ -21,12 +24,14 @@ const DashboardNavbar: React.FC = () => {
         <Link to={'/browse'}>
           <Logo />
         </Link>
-        <div className="whitespace-nowrap flex items-center cursor-pointer">
+        <div
+          onClick={() => setOpenMenu(!openMenu)}
+          className="whitespace-nowrap flex items-center cursor-pointer"
+        >
           <p className="max-sm:hidden whitespace-nowrap mr-6">
             Hi, {user.name}.
           </p>
           <div
-            onClick={() => setOpenMenu(!openMenu)}
             className={`flex items-center justify-center h-12 w-12 aspect-square rounded-full bg-dark-gray overflow-hidden mr-2
 		 ${
        !user.avatar

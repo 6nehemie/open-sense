@@ -29,6 +29,8 @@ export const validateRegisterInput = withValidationErrors([
     .withMessage('Email is invalid')
     .isEmail()
     .withMessage('Invalid email format')
+    .notEmpty()
+    .withMessage('Email is required')
     .custom(async (email) => {
       const user = await User.findOne({ email }); // Using findOne instead of find because we only want to find one user
       if (user) throw new BadRequestError('Email already exists');
@@ -64,8 +66,16 @@ export const validateLoginInput = withValidationErrors([
 ]);
 
 export const validateUpdateUserInput = withValidationErrors([
-  body('name').notEmpty().withMessage('Name is required'),
+  body('name')
+    .optional()
+    .custom((name, { req }) => {
+      if (!name) throw new BadRequestError('Name is required');
+      return true;
+    }),
   body('email')
+    .optional()
+    .notEmpty()
+    .withMessage('Email is required')
     .isEmail()
     .withMessage('Email is invalid')
     .isEmail()

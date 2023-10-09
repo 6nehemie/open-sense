@@ -3,7 +3,6 @@ import { StatusCodes } from 'http-status-codes';
 import { hashPassword } from '../utils/passwordUtils.js';
 import { createToken } from '../utils/tokenUtils.js';
 
-// @desc    Register a new user
 export const registerUser = async (req, res) => {
   // Making sure to get the right input from the user
   const { name, email, password } = req.body;
@@ -34,4 +33,9 @@ export const loginUser = async (req, res) => {
     .json({ message: 'User logged in successfully' });
 };
 
-export const logoutUser = async (req, res) => {};
+export const logoutUser = async (req, res) => {
+  return res
+    .clearCookie('jwt')
+    .status(StatusCodes.OK)
+    .json({ message: 'User logged out successfully' });
+};

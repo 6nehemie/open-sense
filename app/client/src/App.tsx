@@ -9,7 +9,7 @@ import {
   Settings,
   SignUp,
 } from './pages';
-import { loginAction, registerAction } from './utils/actions';
+import { loginAction, registerAction, settingAction } from './utils/actions';
 import { dashboardLoader } from './utils/loaders';
 
 const router = createBrowserRouter([
@@ -27,7 +27,7 @@ const router = createBrowserRouter([
         loader: dashboardLoader,
         children: [
           { index: true, element: <Browse /> },
-          { path: 'settings', element: <Settings /> },
+          { path: 'settings', element: <Settings />, action: settingAction },
         ],
       },
     ],
