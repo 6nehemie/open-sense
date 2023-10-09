@@ -14,7 +14,7 @@ interface PostInput {
 const Settings = () => {
   const user = useContext(DashboardContext);
   const updatedData = useActionData() as PostInput;
-  console.log(updatedData);
+
   const [updateError, setUpdateError] = useState<{
     name: string;
     email: string;
@@ -45,8 +45,6 @@ const Settings = () => {
     }
   }, [updatedData]);
 
-  console.log(updatedData.avatar);
-
   return (
     <div className="p-side w-screen pb-12 max-[1183px]:pt-48">
       <div className="max-w-screen-wide w-full mx-auto">
@@ -59,7 +57,7 @@ const Settings = () => {
         >
           <div className="flex flex-col gap-5">
             <h3 className="heading-3 font-normal">My data</h3>
-            <UploadInput user={user} uploadedFile={updatedData.avatar} />
+            <UploadInput user={user} uploadedFile={updatedData?.avatar} />
             <SettingsInput
               label="Name"
               name="name"

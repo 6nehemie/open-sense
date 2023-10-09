@@ -7,7 +7,7 @@ interface UploadInputProps {
     email: string;
     avatar: string;
   };
-  uploadedFile?: File;
+  uploadedFile?: File | undefined;
 }
 
 const UploadInput: React.FC<UploadInputProps> = ({ user, uploadedFile }) => {
