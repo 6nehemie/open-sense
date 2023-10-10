@@ -8,6 +8,7 @@ import {
   Login,
   ManageCourses,
   ManageUsers,
+  NewCourse,
   Plans,
   Settings,
   SignUp,
@@ -45,6 +46,10 @@ const router = createBrowserRouter([
           {
             path: 'courses',
             element: <ManageCourses />,
+          },
+          {
+            path: 'new-course',
+            element: <NewCourse />,
           },
         ],
       },

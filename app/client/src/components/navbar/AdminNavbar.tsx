@@ -16,8 +16,19 @@ const AdminNavbar: React.FC<Props> = ({ user }) => {
 
   useClickOutside(menuRef, () => setOpenMenu(false));
 
+  const handleNavigation = () => {
+    if (
+      location.pathname === '/admin' ||
+      location.pathname === '/admin/' ||
+      location.pathname === '/admin/courses' ||
+      location.pathname === '/admin/courses/'
+    )
+      return true;
+    return false;
+  };
+
   return (
-    <div className="sticky top-0 w-full p-side pb-6 z-50 bg-dark-gray bg-opacity-30 backdrop-blur-lg">
+    <div className="sticky top-0 w-full p-side pb-6 z-50 bg-dark-gray bg-opacity-30 backdrop-blur-lg mb-8">
       <nav
         className={`relative flex justify-between items-center max-w-screen-wide mx-auto
 	pt-14 max-lg:pt-10 max-sm:pt-8 font-exo z-50 mb-6
@@ -64,26 +75,33 @@ const AdminNavbar: React.FC<Props> = ({ user }) => {
           setOpenMenu={setOpenMenu}
         />
       </nav>
-      <div className="max-w-screen-wide w-full mx-auto flex gap-8 mb-10">
-        <Link
-          to={'.'}
-          className={`
-		${location.pathname === '/admin' ? 'underline underline-offset-8' : ''}`}
-        >
-          Users
-        </Link>
-        <Link
-          to={'courses'}
-          className={`
+      {handleNavigation() && (
+        <div className="max-w-screen-wide w-full mx-auto flex gap-8">
+          <Link
+            to={'.'}
+            className={`
+		${
+      location.pathname === '/admin' || location.pathname === '/admin/'
+        ? 'underline underline-offset-8'
+        : ''
+    }`}
+          >
+            Users
+          </Link>
+          <Link
+            to={'courses'}
+            className={`
 				  ${
-            location.pathname === '/admin/courses'
+            location.pathname === '/admin/courses' ||
+            location.pathname === '/admin/courses/'
               ? 'underline underline-offset-8'
               : ''
           }`}
-        >
-          Courses
-        </Link>
-      </div>
+          >
+            Courses
+          </Link>
+        </div>
+      )}
     </div>
   );
 };

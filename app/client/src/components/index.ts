@@ -24,3 +24,5 @@ export { default as Courses } from './sections/courses/Courses';
 export { default as SettingsInput } from './forms/inputs/SettingsInput';
 export { default as ChangePasswordInput } from './forms/inputs/ChangePasswordInput';
 export { default as UploadInput } from './forms/inputs/UploadInput';
+export { default as AdminInput } from './forms/inputs/AdminInput';
+export { default as AdminTextArea } from './forms/inputs/AdminTextArea';

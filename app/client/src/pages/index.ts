@@ -9,3 +9,4 @@ export { default as DashboardLayout } from './DashboardLayout';
 export { default as Admin } from './Admin';
 export { default as ManageUsers } from './ManageUsers';
 export { default as ManageCourses } from './ManageCourses';
+export { default as NewCourse } from './NewCourse';
