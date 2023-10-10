@@ -1,9 +1,9 @@
 import { ArrowLongLeftIcon, PhotoIcon } from '@heroicons/react/24/outline';
-import { Form, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { AdminInput, AdminTextArea, Card } from '../components';
 import { useState } from 'react';
 
-const NewCourse = () => {
+const EditCourse = () => {
   const [thumbnailUrl, setThumbnailUrl] = useState<string | null>(null);
   const [formValues, setFormValues] = useState({
     title: '',
@@ -11,6 +11,8 @@ const NewCourse = () => {
     duration: '',
     thumbnail: undefined as File | undefined,
   });
+
+  console.log(formValues);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -21,7 +23,7 @@ const NewCourse = () => {
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
     const file = event.target.files?.[0];
-
+    console.log(file);
     if (file) {
       setFormValues((prev) => ({ ...prev, thumbnail: file }));
       setThumbnailUrl(URL.createObjectURL(file));
@@ -43,9 +45,8 @@ const NewCourse = () => {
       </div>
 
       <div className="p-side mb-16">
-        <Form
-          method="post"
-          encType="multipart/form-data"
+        <form
+          action=""
           className="relative w-full max-w-screen-wide mx-auto font-exo course-grid gap-6"
         >
           <div className="flex flex-col gap-4 min-w-xl w-full">
@@ -92,7 +93,6 @@ const NewCourse = () => {
                 <input
                   type="file"
                   accept="image/*"
-                  name="thumbnail"
                   id="thumbnail"
                   onChange={handleThumbnailChange}
                   className="hidden"
@@ -119,18 +119,15 @@ const NewCourse = () => {
                 >
                   Cancel
                 </Link>
-                <button
-                  type="submit"
-                  className="text-red-light hover:text-red-light-dark transition-colors duration-200"
-                >
+                <button className="text-red-light hover:text-red-light-dark transition-colors duration-200">
                   Create
                 </button>
               </div>
             </div>
           </div>
-        </Form>
+        </form>
       </div>
     </>
   );
 };
-export default NewCourse;
+export default EditCourse;

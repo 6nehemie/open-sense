@@ -13,7 +13,12 @@ import {
   Settings,
   SignUp,
 } from './pages';
-import { loginAction, registerAction, settingAction } from './utils/actions';
+import {
+  addCourseAction,
+  loginAction,
+  registerAction,
+  settingAction,
+} from './utils/actions';
 import { adminLoader, dashboardLoader } from './utils/loaders';
 
 const router = createBrowserRouter([
@@ -50,6 +55,7 @@ const router = createBrowserRouter([
           {
             path: 'new-course',
             element: <NewCourse />,
+            action: addCourseAction,
           },
         ],
       },

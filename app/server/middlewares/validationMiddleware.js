@@ -87,12 +87,12 @@ export const validateUpdateUserInput = withValidationErrors([
     }),
 ]);
 
-export const validateAddCourseInput = withValidationErrors([
-  body('title').notEmpty().withMessage('Title is required'),
-  body('slogan').notEmpty().withMessage('Slogan is required'),
-  body('description')
-    .optional()
-    .notEmpty()
-    .withMessage('Description is required'),
-  // body('thumbnail').notEmpty().withMessage('Thumbnail is required'),
-]);
+// export const validateAddCourseInput = withValidationErrors([
+//   body('title').optional().notEmpty().withMessage('Title is required'),
+//   body('slogan').optional().notEmpty().withMessage('Slogan is required'),
+//   body('description')
+//     .optional()
+//     .notEmpty()
+//     .withMessage('Description is required'),
+//   // body('thumbnail').notEmpty().withMessage('Thumbnail is required'),
+// ]);

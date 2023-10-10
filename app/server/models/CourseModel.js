@@ -4,6 +4,7 @@ const CourseSchema = new mongoose.Schema({
   title: String,
   slogan: String,
   description: String,
+  duration: String,
   thumbnail: String,
   thumbnailPublicId: String,
   createdAt: {
