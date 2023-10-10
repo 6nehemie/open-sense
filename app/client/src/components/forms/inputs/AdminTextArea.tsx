@@ -1,10 +1,15 @@
-const AdminTextArea = () => {
+interface AdminTextAreaProps {
+  defaultValue?: string;
+}
+
+const AdminTextArea: React.FC<AdminTextAreaProps> = ({ defaultValue }) => {
   return (
     <div className="flex flex-col gap-4 max-w-xl">
       <label htmlFor="Description">Description (optional)*</label>
       <textarea
         name="Description"
         id="Description"
+        defaultValue={defaultValue}
         cols={30}
         rows={10}
         placeholder="Tell your members about your course"

@@ -4,10 +4,20 @@ import {
   EllipsisVerticalIcon,
   PlusIcon,
 } from '@heroicons/react/24/outline';
-import { coursesFeatured } from '../constants';
-import { Link } from 'react-router-dom';
+// import { coursesFeatured } from '../constants';
+import { Link, useLoaderData } from 'react-router-dom';
+
+interface Course {
+  _id: string;
+  title: string;
+  slogan: string;
+  thumbnail: string;
+  createdAt: string | Date;
+}
 
 const ManageCourses = () => {
+  const { courses } = useLoaderData() as { courses: Course[] };
+  console.log(courses);
   return (
     <>
       <div className="p-side">
@@ -36,16 +46,24 @@ const ManageCourses = () => {
               </div>
 
               <ul>
-                {coursesFeatured.courses.map((course) => (
+                {courses.map((course) => (
                   <li className=" items-center relative grid gap-x-2 grid-cols-4 px-4 py-3 font-light border-b-[1px] border-neutral-800 max-[1471px]:grid-cols-3 max-[900px]:grid-cols-2 max-[612px]:grid-cols-1">
                     <div className=" flex items-center gap-4">
                       <div className="aspect-square rounded-md bg-neutral-700 h-8 overflow-hidden">
-                        {course.imageSrc && (
-                          <img src={course.imageSrc} alt="" />
+                        {course.thumbnail && (
+                          <img
+                            src={course.thumbnail}
+                            alt={`${course.title} thumbnail`}
+                          />
                         )}
                       </div>
                       <div className="leading-tight">
-                        <p>{course.label}</p>
+                        <Link
+                          to={`edit-course/${course._id}`}
+                          className="hover:underline underline-offset-2"
+                        >
+                          {course.title}
+                        </Link>
                         <p className="text-neutral-400 text-sm min-[1471px]:hidden">
                           {course.slogan.slice(0, 20)}
                           {course.slogan.length > 20 && '...'}
@@ -58,7 +76,9 @@ const ManageCourses = () => {
                       {course.slogan.length > 30 && '...'}
                     </p>
 
-                    <p className="max-[612px]:hidden">{course.publishDate}</p>
+                    <p className="max-[612px]:hidden">
+                      {course.createdAt as string}
+                    </p>
 
                     <p className="max-[900px]:hidden">376</p>
 

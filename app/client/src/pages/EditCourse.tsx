@@ -1,14 +1,20 @@
 import { ArrowLongLeftIcon, PhotoIcon } from '@heroicons/react/24/outline';
-import { Link } from 'react-router-dom';
+import { Form, Link, useLoaderData } from 'react-router-dom';
 import { AdminInput, AdminTextArea, Card } from '../components';
 import { useState } from 'react';
+import { Course } from '../types/courseType';
 
 const EditCourse = () => {
-  const [thumbnailUrl, setThumbnailUrl] = useState<string | null>(null);
+  const course = useLoaderData() as Course;
+  console.log(course);
+
+  const [thumbnailUrl, setThumbnailUrl] = useState<string | null>(
+    course.thumbnail
+  );
   const [formValues, setFormValues] = useState({
-    title: '',
-    slogan: '',
-    duration: '',
+    title: course.title,
+    slogan: course.slogan,
+    duration: course.duration,
     thumbnail: undefined as File | undefined,
   });
 
@@ -45,8 +51,9 @@ const EditCourse = () => {
       </div>
 
       <div className="p-side mb-16">
-        <form
-          action=""
+        <Form
+          method="post"
+          encType="multipart/form-data"
           className="relative w-full max-w-screen-wide mx-auto font-exo course-grid gap-6"
         >
           <div className="flex flex-col gap-4 min-w-xl w-full">
@@ -55,12 +62,14 @@ const EditCourse = () => {
               label="Title (required)*"
               name="title"
               onChange={handleInputChange}
+              defaultValue={course.title}
               placeholder="Add a title that describe your course"
             />
             <AdminInput
               label="Slogan (required)*"
               type="text"
               name="slogan"
+              defaultValue={course.slogan}
               onChange={handleInputChange}
               placeholder="Add a catchy slogan for your course"
             />
@@ -68,11 +77,12 @@ const EditCourse = () => {
               label="Duration (required)*"
               type="text"
               name="duration"
+              defaultValue={course.duration}
               onChange={handleInputChange}
               placeholder="An approximate duration of your course"
             />
 
-            <AdminTextArea />
+            <AdminTextArea defaultValue={course.description} />
 
             <div className="flex flex-col gap-2">
               <h3>Thumbnail (required)*</h3>
@@ -125,7 +135,7 @@ const EditCourse = () => {
               </div>
             </div>
           </div>
-        </form>
+        </Form>
       </div>
     </>
   );

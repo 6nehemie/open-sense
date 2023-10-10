@@ -4,6 +4,7 @@ interface AdminInputProps {
   type?: string;
   placeholder?: string;
   error?: string;
+  defaultValue?: string;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -12,6 +13,7 @@ const AdminInput: React.FC<AdminInputProps> = ({
   name,
   type = 'text',
   placeholder,
+  defaultValue,
   onChange,
 }) => {
   return (
@@ -23,6 +25,7 @@ const AdminInput: React.FC<AdminInputProps> = ({
         id={name}
         onChange={onChange}
         placeholder={placeholder}
+        defaultValue={defaultValue}
         className={`bg-inherit border border-neutral-800 rounded-md p-2 outline-none font-light`}
       />
     </div>

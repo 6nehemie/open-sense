@@ -4,6 +4,7 @@ import {
   Admin,
   Browse,
   DashboardLayout,
+  EditCourse,
   Landing,
   Login,
   ManageCourses,
@@ -18,8 +19,14 @@ import {
   loginAction,
   registerAction,
   settingAction,
+  updateCourseAction,
 } from './utils/actions';
-import { adminLoader, dashboardLoader } from './utils/loaders';
+import {
+  adminLoader,
+  dashboardLoader,
+  getAllCoursesLoader,
+  getSingleCourseLoader,
+} from './utils/loaders';
 
 const router = createBrowserRouter([
   {
@@ -51,11 +58,18 @@ const router = createBrowserRouter([
           {
             path: 'courses',
             element: <ManageCourses />,
+            loader: getAllCoursesLoader,
           },
           {
             path: 'new-course',
             element: <NewCourse />,
             action: addCourseAction,
+          },
+          {
+            path: 'courses/edit-course/:id',
+            element: <EditCourse />,
+            action: updateCourseAction,
+            loader: getSingleCourseLoader,
           },
         ],
       },

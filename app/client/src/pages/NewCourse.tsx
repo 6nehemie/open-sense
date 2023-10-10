@@ -1,16 +1,26 @@
 import { ArrowLongLeftIcon, PhotoIcon } from '@heroicons/react/24/outline';
-import { Form, Link } from 'react-router-dom';
+import { Form, Link, useActionData } from 'react-router-dom';
 import { AdminInput, AdminTextArea, Card } from '../components';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const NewCourse = () => {
+  const errors = useActionData();
+  console.log(errors);
+
   const [thumbnailUrl, setThumbnailUrl] = useState<string | null>(null);
+  const [responseError, setResponseError] = useState<string | null>(null);
   const [formValues, setFormValues] = useState({
     title: '',
     slogan: '',
     duration: '',
     thumbnail: undefined as File | undefined,
   });
+
+  useEffect(() => {
+    if (typeof errors === 'string') {
+      setResponseError(errors);
+    }
+  }, [errors]);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -50,6 +60,9 @@ const NewCourse = () => {
         >
           <div className="flex flex-col gap-4 min-w-xl w-full">
             <h2 className="heading-3 mb-0">Details</h2>
+            {responseError && (
+              <p className="text-red-light font-light">*{responseError}</p>
+            )}
             <AdminInput
               label="Title (required)*"
               name="title"
