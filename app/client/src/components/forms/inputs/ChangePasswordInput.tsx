@@ -16,7 +16,6 @@ const ChangePasswordInput: React.FC<ChangePasswordInputProps> = ({
   newValue,
 }) => {
   const [edit, setEdit] = useState(false);
-  console.log(newValue);
 
   useEffect(() => {
     if (newValue) {

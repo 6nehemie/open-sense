@@ -9,8 +9,8 @@ const ManageUsers = () => {
   return (
     <>
       <div className="p-side">
-        <h1 className="heading-2 mb-8 w-full max-w-screen-wide mx-auto">
-          Users
+        <h1 className="heading-3 mb-8 w-full max-w-screen-wide mx-auto">
+          Manage Users & Members
         </h1>
       </div>
 

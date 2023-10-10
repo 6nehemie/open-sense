@@ -17,7 +17,6 @@ interface User {
 
 const DashboardLayout = () => {
   const user = useLoaderData() as User;
-  console.log(user);
 
   const pathname = useLocation();
   const dynamicBackground = pathname.pathname === '/browse/settings';

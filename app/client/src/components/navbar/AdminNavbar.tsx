@@ -14,8 +14,6 @@ const AdminNavbar: React.FC<Props> = ({ user }) => {
   const menuRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
 
-  console.log(location.pathname);
-
   useClickOutside(menuRef, () => setOpenMenu(false));
 
   return (
