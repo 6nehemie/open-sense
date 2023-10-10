@@ -3,6 +3,7 @@ import {
   ArrowRightOnRectangleIcon,
   Cog6ToothIcon,
   HomeIcon,
+  ShieldExclamationIcon,
 } from '@heroicons/react/24/outline';
 import customFetch from '../../utils/customFetch';
 
@@ -10,12 +11,14 @@ interface DashboardMenuProps {
   openMenu: boolean;
   setOpenMenu: (open: boolean) => void;
   menuRef: React.RefObject<HTMLDivElement>;
+  role?: string;
 }
 
 const DashboardMenu: React.FC<DashboardMenuProps> = ({
   openMenu,
   setOpenMenu,
   menuRef,
+  role,
 }) => {
   const navigate = useNavigate();
 
@@ -36,19 +39,28 @@ const DashboardMenu: React.FC<DashboardMenuProps> = ({
 	`}
     >
       <Link
-        to={'.'}
+        to={'/browse'}
         onClick={() => setOpenMenu(false)}
         className="text-md font-light flex items-center gap-3 py-2 px-4 w-full h-full hover:bg-neutral-800 bg-opacity-80 rounded-lg transition-colors duration-200"
       >
         <HomeIcon className="h-6" /> <span>Home</span>
       </Link>
       <Link
-        to={'settings'}
+        to={'/browse/settings'}
         onClick={() => setOpenMenu(false)}
         className="text-md font-light flex items-center gap-3 py-2 px-4 w-full h-full hover:bg-neutral-800 bg-opacity-80 rounded-lg transition-colors duration-200"
       >
         <Cog6ToothIcon className="h-6" /> <span>Settings</span>
       </Link>
+      {role === 'admin' && (
+        <Link
+          to={'/admin'}
+          onClick={() => setOpenMenu(false)}
+          className="text-md font-light flex items-center gap-3 py-2 px-4 w-full h-full hover:bg-neutral-800 bg-opacity-80 rounded-lg transition-colors duration-200"
+        >
+          <ShieldExclamationIcon className="h-6" /> <span>Admin</span>
+        </Link>
+      )}
       <button
         onClick={() => {
           logout();

@@ -1,16 +1,19 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import HomeLayout from './pages/HomeLayout';
 import {
+  Admin,
   Browse,
   DashboardLayout,
   Landing,
   Login,
+  ManageCourses,
+  ManageUsers,
   Plans,
   Settings,
   SignUp,
 } from './pages';
 import { loginAction, registerAction, settingAction } from './utils/actions';
-import { dashboardLoader } from './utils/loaders';
+import { adminLoader, dashboardLoader } from './utils/loaders';
 
 const router = createBrowserRouter([
   {
@@ -28,6 +31,21 @@ const router = createBrowserRouter([
         children: [
           { index: true, element: <Browse /> },
           { path: 'settings', element: <Settings />, action: settingAction },
+        ],
+      },
+      {
+        path: 'admin',
+        element: <Admin />,
+        loader: adminLoader,
+        children: [
+          {
+            index: true,
+            element: <ManageUsers />,
+          },
+          {
+            path: 'courses',
+            element: <ManageCourses />,
+          },
         ],
       },
     ],

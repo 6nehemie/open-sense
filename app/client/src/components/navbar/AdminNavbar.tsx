@@ -1,24 +1,28 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Logo } from '..';
-// import { user } from '../../constants';
 import { UserIcon } from '@heroicons/react/24/outline';
-import { useContext, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { useClickOutside } from '../../hooks';
 import DashboardMenu from './DashboardMenu';
-import { DashboardContext } from '../../pages/DashboardLayout';
 
-const DashboardNavbar: React.FC = () => {
-  const user = useContext(DashboardContext);
+interface Props {
+  user: { name: string; email: string; role: string; avatar: string };
+}
+
+const AdminNavbar: React.FC<Props> = ({ user }) => {
   const [openMenu, setOpenMenu] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
+  const location = useLocation();
+
+  console.log(location.pathname);
 
   useClickOutside(menuRef, () => setOpenMenu(false));
 
   return (
-    <div className="fixed top-0 w-full p-side pb-6 z-50">
+    <div className="sticky top-0 w-full p-side pb-6 z-50 bg-dark-gray bg-opacity-30 backdrop-blur-lg">
       <nav
         className={`relative flex justify-between items-center max-w-screen-wide mx-auto
-	pt-14 max-lg:pt-10 max-sm:pt-8 font-exo z-50
+	pt-14 max-lg:pt-10 max-sm:pt-8 font-exo z-50 mb-6
   `}
       >
         <Link to={'/browse'}>
@@ -62,7 +66,27 @@ const DashboardNavbar: React.FC = () => {
           setOpenMenu={setOpenMenu}
         />
       </nav>
+      <div className="max-w-screen-wide w-full mx-auto flex gap-8 mb-10">
+        <Link
+          to={'.'}
+          className={`
+		${location.pathname === '/admin' ? 'underline underline-offset-8' : ''}`}
+        >
+          Users
+        </Link>
+        <Link
+          to={'courses'}
+          className={`
+				  ${
+            location.pathname === '/admin/courses'
+              ? 'underline underline-offset-8'
+              : ''
+          }`}
+        >
+          Courses
+        </Link>
+      </div>
     </div>
   );
 };
-export default DashboardNavbar;
+export default AdminNavbar;

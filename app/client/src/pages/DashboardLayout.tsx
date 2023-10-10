@@ -6,11 +6,13 @@ export const DashboardContext = createContext({
   name: '',
   email: '',
   avatar: '',
+  role: '',
 });
 interface User {
   name: string;
   email: string;
   avatar: string;
+  role: string;
 }
 
 const DashboardLayout = () => {

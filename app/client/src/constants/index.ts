@@ -252,3 +252,20 @@ export const user = {
   email: 'liam-o.connell@test.com',
   avatar: '/users/user-1.png',
 };
+
+export const users = [
+  { name: 'John Doe', status: 'member', email: 'johndoe@example.com' },
+  { name: 'Jane Smith', status: 'non-member', email: 'janesmith@example.com' },
+  { name: 'Bob Johnson', status: 'member', email: 'bobjohnson@example.com' },
+  { name: 'Alice Lee', status: 'non-member', email: 'alicelee@example.com' },
+  { name: 'Mike Brown', status: 'member', email: 'mikebrown@example.com' },
+  { name: 'Sarah Davis', status: 'member', email: 'sarahdavis@example.com' },
+  { name: 'Tom Wilson', status: 'non-member', email: 'tomwilson@example.com' },
+  { name: 'Emily Taylor', status: 'member', email: 'emilytaylor@example.com' },
+  { name: 'David Lee', status: 'non-member', email: 'davidlee@example.com' },
+  {
+    name: 'Karen Johnson',
+    status: 'member',
+    email: 'karenjohnson@example.com',
+  },
+];

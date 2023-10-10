@@ -6,22 +6,17 @@ import cookieParser from 'cookie-parser';
 import errorHandlerMiddleware from './middlewares/errorHanlderMiddleware.js';
 import authMiddleware from './middlewares/authMiddleware.js';
 import cloudinary from 'cloudinary';
+import dotenv from 'dotenv';
+dotenv.config();
 
 // Public
 import path, { dirname } from 'path';
 import { fileURLToPath } from 'url';
 
-// cloudinary.v2.config({
-//   cloud_name: process.env.CLOUD_NAME,
-//   api_key: process.env.CLOUD_API_KEY,
-//   api_secret: process.env.CLOUD_API_SECRET,
-//   secure: true,
-// });
-
 cloudinary.v2.config({
-  cloud_name: 'db7ums0sv',
-  api_key: '566732588993215',
-  api_secret: 'lN6xHUzfAPs4FxMWXxQ79XsB0_M',
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.CLOUD_API_KEY,
+  api_secret: process.env.CLOUD_API_SECRET,
   secure: true,
 });
 
