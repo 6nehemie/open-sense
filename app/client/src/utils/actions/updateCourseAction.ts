@@ -1,4 +1,4 @@
-import { ActionFunctionArgs, redirect } from 'react-router-dom';
+import { ActionFunctionArgs } from 'react-router-dom';
 import customFetch from '../customFetch';
 import { AxiosError } from 'axios';
 
@@ -6,17 +6,11 @@ export const updateCourseAction = async ({
   params,
   request,
 }: ActionFunctionArgs) => {
+  console.log(request);
   const formData = await request.formData();
-  const data = Object.fromEntries(formData);
-
-  console.log(data);
-
-  console.log(params.id);
-
-  // const file = formData.get('thumbnail') as File;
-
   // const data = Object.fromEntries(formData);
-
+  // const file = formData.get('thumbnail') as File;
+  // const data = Object.fromEntries(formData);
   // if (file && file.size > 50000) return 'Image size is too big'; //! check for this line (50kb)
 
   try {

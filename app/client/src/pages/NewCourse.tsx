@@ -5,10 +5,8 @@ import { useEffect, useState } from 'react';
 
 const NewCourse = () => {
   const errors = useActionData();
-  console.log(errors);
-
-  const [thumbnailUrl, setThumbnailUrl] = useState<string | null>(null);
   const [responseError, setResponseError] = useState<string | null>(null);
+  const [thumbnailUrl, setThumbnailUrl] = useState<string | null>(null);
   const [formValues, setFormValues] = useState({
     title: '',
     slogan: '',

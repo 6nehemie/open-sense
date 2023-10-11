@@ -1,12 +1,19 @@
 import { ArrowLongLeftIcon, PhotoIcon } from '@heroicons/react/24/outline';
-import { Form, Link, useLoaderData } from 'react-router-dom';
+import { Form, Link, useActionData, useLoaderData } from 'react-router-dom';
 import { AdminInput, AdminTextArea, Card } from '../components';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Course } from '../types/courseType';
 
 const EditCourse = () => {
+  const errors = useActionData();
+  const [responseError, setResponseError] = useState<string | null>(null);
   const course = useLoaderData() as Course;
-  console.log(course);
+
+  useEffect(() => {
+    if (typeof errors === 'string') {
+      setResponseError(errors);
+    }
+  }, [errors]);
 
   const [thumbnailUrl, setThumbnailUrl] = useState<string | null>(
     course.thumbnail
@@ -17,8 +24,6 @@ const EditCourse = () => {
     duration: course.duration,
     thumbnail: undefined as File | undefined,
   });
-
-  console.log(formValues);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -52,12 +57,15 @@ const EditCourse = () => {
 
       <div className="p-side mb-16">
         <Form
-          method="post"
+          method="patch"
           encType="multipart/form-data"
           className="relative w-full max-w-screen-wide mx-auto font-exo course-grid gap-6"
         >
           <div className="flex flex-col gap-4 min-w-xl w-full">
             <h2 className="heading-3 mb-0">Details</h2>
+            {responseError && (
+              <p className="text-red-light font-light">*{responseError}</p>
+            )}
             <AdminInput
               label="Title (required)*"
               name="title"
@@ -104,6 +112,7 @@ const EditCourse = () => {
                   type="file"
                   accept="image/*"
                   id="thumbnail"
+                  name="thumbnail"
                   onChange={handleThumbnailChange}
                   className="hidden"
                 />

@@ -55,11 +55,25 @@ export const addCourse = async (req, res) => {
 
 export const editCourse = async (req, res) => {
   const { title, slogan, description, duration } = req.body;
+  console.log(req.body);
 
-  if (!title || !slogan || !duration)
+  if (!title)
     return res
       .status(StatusCodes.BAD_REQUEST)
-      .json({ message: 'All fields noted "(required)*" must not be empty.' });
+      .json({ message: 'Title is required' });
+  if (!slogan)
+    return res
+      .status(StatusCodes.BAD_REQUEST)
+      .json({ message: 'Slogan is required' });
+  if (!duration)
+    return res
+      .status(StatusCodes.BAD_REQUEST)
+      .json({ message: 'Duration is required' });
+
+  // if (!title || !slogan || !duration)
+  //   return res
+  //     .status(StatusCodes.BAD_REQUEST)
+  //     .json({ message: 'All fields noted "(required)*" must not be empty.' });
 
   const course = {
     title,
@@ -67,6 +81,8 @@ export const editCourse = async (req, res) => {
     description,
     duration,
   };
+
+  console.log(req.file);
 
   if (req.file) {
     const response = await cloudinary.v2.uploader.upload(req.file.path);

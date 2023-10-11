@@ -10,6 +10,7 @@ import upload from '../middlewares/multerMiddleware.js';
 const router = Router();
 
 const checkBody = (req, res, next) => {
+  console.log(req.file);
   console.log(req.body);
   next();
 };
@@ -21,6 +22,6 @@ router
 router
   .route('/:id')
   .get(getCourse)
-  .patch(isAdminMiddleware, checkBody, editCourse);
+  .patch(isAdminMiddleware, upload.single('thumbnail'), editCourse);
 
 export default router;

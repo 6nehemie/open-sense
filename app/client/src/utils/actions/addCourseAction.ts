@@ -5,9 +5,7 @@ import { AxiosError } from 'axios';
 export const addCourseAction = async ({ request }: ActionFunctionArgs) => {
   const formData = await request.formData();
   // const file = formData.get('thumbnail') as File;
-
   // const data = Object.fromEntries(formData);
-
   // if (file && file.size > 50000) return 'Image size is too big'; //! check for this line (50kb)
 
   try {
