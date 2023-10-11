@@ -1,7 +1,7 @@
 import {
   ArrowLongLeftIcon,
   ArrowLongRightIcon,
-  EllipsisVerticalIcon,
+  // EllipsisVerticalIcon,
 } from '@heroicons/react/24/outline';
 
 import { useLoaderData } from 'react-router-dom';
@@ -67,9 +67,9 @@ const ManageUsers = () => {
 
                     <p className="max-[612px]:hidden">{user.email}</p>
 
-                    <div className="absolute right-4 top-4 cursor-pointer hover:bg-neutral-800 text-light-gray rounded-full p-1 transition-colors duration-200">
+                    {/* <div className="absolute right-4 top-4 cursor-pointer hover:bg-neutral-800 text-light-gray rounded-full p-1 transition-colors duration-200">
                       <EllipsisVerticalIcon className="h-5" />
-                    </div>
+                    </div> */}
                   </li>
                 ))}
               </ul>
