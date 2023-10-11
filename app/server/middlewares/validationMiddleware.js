@@ -96,3 +96,9 @@ export const validateUpdateUserInput = withValidationErrors([
 //     .withMessage('Description is required'),
 //   // body('thumbnail').notEmpty().withMessage('Thumbnail is required'),
 // ]);
+
+export const validateChapterInput = withValidationErrors([
+  body('title').notEmpty().withMessage('Title is required'),
+  body('chapterNumber').notEmpty().withMessage('Chapter number is required'),
+  body('description').optional(),
+]);

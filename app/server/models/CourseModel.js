@@ -7,6 +7,12 @@ const CourseSchema = new mongoose.Schema({
   duration: String,
   thumbnail: String,
   thumbnailPublicId: String,
+  chapters: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Chapter',
+    },
+  ],
   createdAt: {
     type: Date,
     default: Date.now,

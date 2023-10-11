@@ -10,12 +10,14 @@ import dotenv from 'dotenv';
 import authRouter from './routes/authRouter.js';
 import userRouter from './routes/userRouter.js';
 import coursesRouter from './routes/courseRouter.js';
+import chapterRouter from './routes/chapterRouter.js';
 
 dotenv.config();
 
 // Public
 import path, { dirname } from 'path';
 import { fileURLToPath } from 'url';
+import { isAdminMiddleware } from './middlewares/isAdminMiddleware.js';
 
 cloudinary.v2.config({
   cloud_name: process.env.CLOUD_NAME,
@@ -41,6 +43,7 @@ app.use(cookieParser());
 app.use('/api/v1/auth', authRouter);
 app.use('/api/v1/users', authMiddleware, userRouter);
 app.use('/api/v1/courses', authMiddleware, coursesRouter);
+app.use('/api/v1/chapters', authMiddleware, isAdminMiddleware, chapterRouter);
 
 app.use('*', (req, res) => {
   res.status(404).json({ message: 'Not Found' });
