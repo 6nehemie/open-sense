@@ -1,11 +1,13 @@
 import {
+  CloudArrowUpIcon,
   //   ArrowLongLeftIcon,
   //   ArrowLongRightIcon,
-  EllipsisVerticalIcon,
   PlusIcon,
 } from '@heroicons/react/24/outline';
 // import { coursesFeatured } from '../constants';
 import { Link, useLoaderData } from 'react-router-dom';
+import { ManageCourseMenu } from '../components';
+import dayjs from 'dayjs';
 
 interface Course {
   _id: string;
@@ -17,7 +19,7 @@ interface Course {
 
 const ManageCourses = () => {
   const { courses } = useLoaderData() as { courses: Course[] };
-  console.log(courses);
+
   return (
     <>
       <div className="p-side">
@@ -36,13 +38,13 @@ const ManageCourses = () => {
 
       <div className="min-[612px]:p-side mb-16">
         <div className="w-full max-w-screen-wide mx-auto font-exo">
-          <div className="border border-neutral-800 min-[612px]:rounded-lg overflow-hidden">
+          <div className="border border-neutral-800 min-[612px]:rounded-lg ">
             <div className="w-full">
               <div className="grid grid-cols-4 py-3 px-4 text-sm bg-neutral-800 bg-opacity-50 font-normal text-neutral-300 border-b-[1px] border-neutral-800 max-[1471px]:grid-cols-3 max-[900px]:grid-cols-2 max-[612px]:grid-cols-1">
                 <h2>Title</h2>
                 <h2 className="max-[1471px]:hidden">Slogan</h2>
                 <h2 className="max-[612px]:hidden">Date</h2>
-                <h2 className="max-[900px]:hidden">Comments</h2>
+                {/* <h2 className="max-[900px]:hidden">Comments</h2> */}
               </div>
 
               <ul>
@@ -77,14 +79,21 @@ const ManageCourses = () => {
                     </p>
 
                     <p className="max-[612px]:hidden">
-                      {course.createdAt as string}
+                      {dayjs(course.createdAt).format('DD/MM/YYYY')}
                     </p>
 
-                    <p className="max-[900px]:hidden">376</p>
+                    <Link
+                      to={'.'}
+                      className="max-[900px]:hidden flex gap-3 hover:underline underline-offset-2"
+                    >
+                      <CloudArrowUpIcon
+                        className="h-6 text-light-gray"
+                        strokeWidth={1.2}
+                      />
+                      <span>Upload</span>
+                    </Link>
 
-                    <div className="absolute right-4 top-4 cursor-pointer hover:bg-neutral-800 text-light-gray rounded-full p-1 transition-colors duration-200">
-                      <EllipsisVerticalIcon className="h-5" />
-                    </div>
+                    <ManageCourseMenu course={course} />
                   </li>
                 ))}
               </ul>

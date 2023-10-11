@@ -2,7 +2,6 @@ import Course from '../models/CourseModel.js';
 import { StatusCodes } from 'http-status-codes';
 import cloudinary from 'cloudinary';
 import * as fs from 'fs/promises';
-import { log } from 'console';
 
 export const getAllCourses = async (req, res) => {
   try {
@@ -102,6 +101,21 @@ export const editCourse = async (req, res) => {
     }
 
     res.status(StatusCodes.OK).json({ message: 'Course updated' });
+  } catch (error) {
+    res.status(StatusCodes.BAD_REQUEST).json({ message: error.message });
+  }
+};
+
+export const deleteCourse = async (req, res) => {
+  try {
+    const responseCourse = await Course.findByIdAndDelete(req.params.id);
+
+    if (responseCourse.thumbnailPublicId) {
+      // Delete the old image from cloudinary
+      await cloudinary.v2.uploader.destroy(responseCourse.thumbnailPublicId);
+    }
+
+    res.status(StatusCodes.OK).json({ message: 'Course deleted' });
   } catch (error) {
     res.status(StatusCodes.BAD_REQUEST).json({ message: error.message });
   }
