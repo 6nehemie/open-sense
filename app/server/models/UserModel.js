@@ -9,6 +9,11 @@ const UserSchema = new mongoose.Schema({
     enum: ['user', 'admin'],
     default: 'user',
   },
+  status: {
+    type: String,
+    enum: ['member', 'non-member'],
+    default: 'non-member',
+  },
   avatar: String,
   avatarId: String,
 });

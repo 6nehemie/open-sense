@@ -26,6 +26,7 @@ import {
   dashboardLoader,
   getAllCoursesLoader,
   getSingleCourseLoader,
+  getUsersLoader,
 } from './utils/loaders';
 
 const router = createBrowserRouter([
@@ -54,6 +55,7 @@ const router = createBrowserRouter([
           {
             index: true,
             element: <ManageUsers />,
+            loader: getUsersLoader,
           },
           {
             path: 'courses',

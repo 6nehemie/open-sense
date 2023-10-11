@@ -1,7 +1,12 @@
-import { Courses } from '../components';
+import { useContext } from 'react';
+import { DashboardCourses } from '../components';
 import Resume from '../components/sections/courses/Resume';
+import { DashboardContext } from './DashboardLayout';
 
 const Browse = () => {
+  const { courses } = useContext(DashboardContext);
+  console.log(courses);
+
   return (
     <div className="relative min-h-screen grid login-grid">
       <div className="relative flex flex-col items-center justify-center row-start-2">
@@ -12,7 +17,7 @@ const Browse = () => {
             to mastery. Dive in today and unlock your potential.
           </p>
         </div>
-        <Courses />
+        <DashboardCourses courses={courses} />
       </div>
 
       <Resume />

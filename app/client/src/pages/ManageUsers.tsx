@@ -3,9 +3,13 @@ import {
   ArrowLongRightIcon,
   EllipsisVerticalIcon,
 } from '@heroicons/react/24/outline';
-import { users } from '../constants/index';
+
+import { useLoaderData } from 'react-router-dom';
+import { User } from '../types/userType';
 
 const ManageUsers = () => {
+  const users = useLoaderData() as User[];
+
   return (
     <>
       <div className="p-side">
@@ -30,7 +34,12 @@ const ManageUsers = () => {
                   <li className=" items-center relative grid grid-cols-4 px-4 py-3 font-light border-b-[1px] border-neutral-800 max-[1150px]:grid-cols-3 max-[900px]:grid-cols-2 max-[612px]:grid-cols-1">
                     <div className=" flex items-center gap-4">
                       <div className="aspect-square rounded-full bg-neutral-700 h-8 overflow-hidden">
-                        {/* {user?.avatar && <img src={user.avatar} alt="" />} */}
+                        {user?.avatar && (
+                          <img
+                            src={user.avatar}
+                            alt={`Profile picture of ${user.name}`}
+                          />
+                        )}
                       </div>
                       <div className="leading-tight">
                         <p>{user.name}</p>
@@ -40,7 +49,7 @@ const ManageUsers = () => {
                       </div>
                     </div>
 
-                    <p className="max-[1150px]:hidden">User</p>
+                    <p className="max-[1150px]:hidden">{user.role}</p>
 
                     <div
                       className={`border w-max px-3 py-1 rounded-full flex items-center gap-2
@@ -69,47 +78,49 @@ const ManageUsers = () => {
         </div>
       </div>
 
-      <div className="p-side text-sm">
-        <div className="w-full max-w-screen-wide mx-auto flex justify-between items-center text-neutral-300">
-          <button className="flex self-start items-center gap-4 hover:text-white transition-colors duration-200">
-            <ArrowLongLeftIcon className="h-5 inline-block max-[602px]:hidden" />
-            <p>Previous</p>
-          </button>
+      {users.length > 10 && (
+        <div className="p-side text-sm">
+          <div className="w-full max-w-screen-wide mx-auto flex justify-between items-center text-neutral-300">
+            <button className="flex self-start items-center gap-4 hover:text-white transition-colors duration-200">
+              <ArrowLongLeftIcon className="h-5 inline-block max-[602px]:hidden" />
+              <p>Previous</p>
+            </button>
 
-          <div className="grid grid-cols-5 w-52">
-            <div className="border-b-[1.5px] pb-2 text-white">
-              <p className="text-center cursor-pointer hover:text-white transition-colors duration-200">
-                1
-              </p>
+            <div className="grid grid-cols-5 w-52">
+              <div className="border-b-[1.5px] pb-2 text-white">
+                <p className="text-center cursor-pointer hover:text-white transition-colors duration-200">
+                  1
+                </p>
+              </div>
+              <div>
+                <p className="text-center cursor-pointer hover:text-white transition-colors duration-200">
+                  2
+                </p>
+              </div>
+              <div>
+                <p className="text-center cursor-pointer hover:text-white transition-colors duration-200">
+                  3
+                </p>
+              </div>
+              <div>
+                <p className="text-center cursor-pointer hover:text-white transition-colors duration-200">
+                  4
+                </p>
+              </div>
+              <div>
+                <p className="text-center cursor-pointer hover:text-white transition-colors duration-200">
+                  5
+                </p>
+              </div>
             </div>
-            <div>
-              <p className="text-center cursor-pointer hover:text-white transition-colors duration-200">
-                2
-              </p>
-            </div>
-            <div>
-              <p className="text-center cursor-pointer hover:text-white transition-colors duration-200">
-                3
-              </p>
-            </div>
-            <div>
-              <p className="text-center cursor-pointer hover:text-white transition-colors duration-200">
-                4
-              </p>
-            </div>
-            <div>
-              <p className="text-center cursor-pointer hover:text-white transition-colors duration-200">
-                5
-              </p>
-            </div>
+
+            <button className="flex self-start items-center gap-4 hover:text-white transition-colors duration-200">
+              <p>Next</p>
+              <ArrowLongRightIcon className="h-5 inline-block max-[602px]:hidden" />
+            </button>
           </div>
-
-          <button className="flex self-start items-center gap-4 hover:text-white transition-colors duration-200">
-            <p>Next</p>
-            <ArrowLongRightIcon className="h-5 inline-block max-[602px]:hidden" />
-          </button>
         </div>
-      </div>
+      )}
     </>
   );
 };

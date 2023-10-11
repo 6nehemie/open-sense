@@ -1,3 +1,4 @@
 export { dashboardLoader } from './dashboardLoader';
-export { adminLoader } from './adminLoader';
+export { adminLoader, getUsersLoader } from './adminLoader';
 export { getAllCoursesLoader, getSingleCourseLoader } from './courseLoader';
+export { browseLoader } from './browseLoader';

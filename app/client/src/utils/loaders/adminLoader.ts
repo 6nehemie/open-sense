@@ -12,3 +12,12 @@ export const adminLoader = async () => {
     return redirect('/');
   }
 };
+
+export const getUsersLoader = async () => {
+  try {
+    const response = await customFetch.get('/users');
+    return response.data;
+  } catch (error) {
+    return redirect('/browse');
+  }
+};

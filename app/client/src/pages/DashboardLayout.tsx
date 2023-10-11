@@ -1,12 +1,11 @@
 import { Outlet, useLoaderData, useLocation } from 'react-router-dom';
 import DashboardNavbar from '../components/navbar/DashboardNavbar';
 import { createContext } from 'react';
+import { Course } from '../types/courseType';
 
 export const DashboardContext = createContext({
-  name: '',
-  email: '',
-  avatar: '',
-  role: '',
+  user: { name: '', email: '', avatar: '', role: '' },
+  courses: [] as Course[],
 });
 interface User {
   name: string;
@@ -16,13 +15,17 @@ interface User {
 }
 
 const DashboardLayout = () => {
-  const user = useLoaderData() as User;
+  const { data: user, courses } = useLoaderData() as {
+    data: User;
+    courses: Course[];
+  };
+  console.log(courses);
 
   const pathname = useLocation();
   const dynamicBackground = pathname.pathname === '/browse/settings';
 
   return (
-    <DashboardContext.Provider value={user}>
+    <DashboardContext.Provider value={{ user, courses }}>
       <div
         className={`relative min-h-screen flex bg-dark-gray bg-opacity-70
       ${dynamicBackground ? 'max-sm:bg-white max-sm:text-dark-gray' : ''}

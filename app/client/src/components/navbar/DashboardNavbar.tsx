@@ -8,7 +8,7 @@ import DashboardMenu from './DashboardMenu';
 import { DashboardContext } from '../../pages/DashboardLayout';
 
 const DashboardNavbar: React.FC = () => {
-  const user = useContext(DashboardContext);
+  const { user } = useContext(DashboardContext);
   const [openMenu, setOpenMenu] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
 

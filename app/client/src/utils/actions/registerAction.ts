@@ -14,6 +14,6 @@ export const registerAction = async ({ request }: ActionFunctionArgs) => {
       console.log(error.response?.data?.message);
       return error?.response?.data?.message;
     }
-    return error;
+    return error || 'Something went wrong';
   }
 };
