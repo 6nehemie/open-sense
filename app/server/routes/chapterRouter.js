@@ -6,17 +6,18 @@ import {
   deleteChapter,
 } from '../controllers/chapterController.js';
 import { validateChapterInput } from '../middlewares/validationMiddleware.js';
+import { isAdminMiddleware } from '../middlewares/isAdminMiddleware.js';
 
 const router = Router();
 
 router
   .route('/:courseId')
-  .post(validateChapterInput, createChapter)
+  .post(validateChapterInput, isAdminMiddleware, createChapter)
   .get(getAllChapters);
 
 router
   .route('/:courseId/:chapterId')
-  .patch(validateChapterInput, updateChapter)
-  .delete(deleteChapter);
+  .patch(validateChapterInput, isAdminMiddleware, updateChapter)
+  .delete(isAdminMiddleware, deleteChapter);
 
 export default router;

@@ -6,6 +6,7 @@ import {
   DashboardLayout,
   EditCourse,
   Landing,
+  Lessons,
   Login,
   ManageCourses,
   ManageUsers,
@@ -72,6 +73,10 @@ const router = createBrowserRouter([
             element: <EditCourse />,
             action: updateCourseAction,
             loader: getSingleCourseLoader,
+          },
+          {
+            path: 'courses/:id/lessons',
+            element: <Lessons />,
           },
         ],
       },

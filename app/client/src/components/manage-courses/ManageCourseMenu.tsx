@@ -52,7 +52,7 @@ const ManageCourseMenu: React.FC<MenuProps> = ({ course }) => {
           className="absolute  flex flex-col right-0 top-2 z-30 bg-neutral-800 bg-opacity-80 backdrop-blur-sm border-[1px] border-light-gray border-opacity-20 w-52 rounded-md overflow-hidden"
         >
           <Link
-            to={'.'}
+            to={`/admin/courses/${course._id}/lessons`}
             className="flex gap-3 py-2 px-4 hover:bg-neutral-900 w-full justify-self-start text-left transition-colors duration-200"
           >
             <CloudArrowUpIcon className="h-6 text-sky-500" strokeWidth={1.2} />

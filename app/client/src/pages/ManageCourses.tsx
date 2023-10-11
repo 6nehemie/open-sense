@@ -83,7 +83,7 @@ const ManageCourses = () => {
                     </p>
 
                     <Link
-                      to={'.'}
+                      to={`/admin/courses/${course._id}/lessons`}
                       className="max-[900px]:hidden flex gap-3 hover:underline underline-offset-2"
                     >
                       <CloudArrowUpIcon
