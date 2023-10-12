@@ -28,3 +28,7 @@ export { default as AdminInput } from './forms/inputs/AdminInput';
 export { default as AdminTextArea } from './forms/inputs/AdminTextArea';
 export { default as ManageCourseMenu } from '../components/manage-courses/ManageCourseMenu';
 export { default as DashboardCourses } from './sections/courses/DashboardCourses';
+export { default as CreateChapter } from './chapter/CreateChapter';
+export { default as Chapters } from './chapter/Chapters';
+export { default as EditChapter } from './chapter/EditChapter';
+export { default as AddLesson } from './lessons/AddLesson';

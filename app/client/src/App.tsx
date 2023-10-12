@@ -28,6 +28,7 @@ import {
   getAllCoursesLoader,
   getSingleCourseLoader,
   getUsersLoader,
+  lessonLoader,
 } from './utils/loaders';
 
 const router = createBrowserRouter([
@@ -77,6 +78,7 @@ const router = createBrowserRouter([
           {
             path: 'courses/:id/lessons',
             element: <Lessons />,
+            loader: lessonLoader,
           },
         ],
       },

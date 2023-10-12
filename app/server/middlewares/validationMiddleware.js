@@ -99,6 +99,6 @@ export const validateUpdateUserInput = withValidationErrors([
 
 export const validateChapterInput = withValidationErrors([
   body('title').notEmpty().withMessage('Title is required'),
-  body('chapterNumber').notEmpty().withMessage('Chapter number is required'),
+  // body('chapterNumber').notEmpty().withMessage('Chapter number is required'),
   body('description').optional(),
 ]);

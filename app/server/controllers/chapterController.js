@@ -28,7 +28,7 @@ export const createChapter = async (req, res, next) => {
 
   const createChapter = {
     title,
-    chapterNumber,
+    // chapterNumber,
     description,
     course: req.params.courseId,
   };
@@ -81,19 +81,19 @@ export const updateChapter = async (req, res, next) => {
 };
 
 export const deleteChapter = async (req, res, next) => {
-  const course = await Course.findById(req.params.courseId);
-  const chapter = await Chapter.findById(req.params.chapterId);
-
-  if (!course)
-    return res
-      .status(StatusCodes.NOT_FOUND)
-      .json({ message: 'Course not found' });
-  if (!chapter)
-    return res
-      .status(StatusCodes.NOT_FOUND)
-      .json({ message: 'Chapter not found' });
-
   try {
+    const course = await Course.findById(req.params.courseId);
+    const chapter = await Chapter.findById(req.params.chapterId);
+
+    if (!course)
+      return res
+        .status(StatusCodes.NOT_FOUND)
+        .json({ message: 'Course not found' });
+    if (!chapter)
+      return res
+        .status(StatusCodes.NOT_FOUND)
+        .json({ message: 'Chapter not found' });
+
     await Chapter.findByIdAndDelete(req.params.chapterId);
     return res.status(StatusCodes.OK).json({ message: 'Chapter deleted' });
   } catch (error) {

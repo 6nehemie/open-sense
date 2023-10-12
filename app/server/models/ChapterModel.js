@@ -2,7 +2,7 @@ import { mongoose } from 'mongoose';
 
 const ChapterSchema = new mongoose.Schema({
   title: String,
-  chapterNumber: Number,
+  // chapterNumber: Number,
   description: String,
   course: {
     type: mongoose.Schema.Types.ObjectId,
