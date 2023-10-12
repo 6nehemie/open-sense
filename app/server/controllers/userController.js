@@ -4,7 +4,6 @@ import User from '../models/UserModel.js';
 import { comparePasswords, hashPassword } from '../utils/passwordUtils.js';
 import cloudinary from 'cloudinary';
 import * as fs from 'fs/promises';
-import { log } from 'console';
 
 export const getCurrentUser = async (req, res) => {
   try {

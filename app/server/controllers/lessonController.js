@@ -1,12 +1,13 @@
 import Lesson from '../models/LessonsModel.js';
 import Chapter from '../models/ChapterModel.js';
 import { StatusCodes } from 'http-status-codes';
+import cloudinary from 'cloudinary';
+import * as fs from 'fs/promises';
+import { resolveMx } from 'dns';
 
 export const createLesson = async (req, res, next) => {
   const { title, description } = req.body;
   const file = req.file;
-
-  console.log('File', file);
 
   if (!title) {
     return res
@@ -16,17 +17,32 @@ export const createLesson = async (req, res, next) => {
 
   try {
     const chapter = await Chapter.findById(req.params.chapterId);
-    console.log('Chapter', chapter);
 
     if (!chapter) {
       return res.status(404).json({ message: 'Chapter not found' });
     }
 
-    const lesson = await Lesson.create({
+    if (!file) return res.status(400).json({ message: 'Video is required' });
+
+    const response = await cloudinary.v2.uploader.upload_large(file.path, {
+      resource_type: 'video',
+    });
+    console.log('IT PASSES THIS');
+    await fs.unlink(file.path);
+
+    // console.log(response);
+
+    const newLesson = {
       title,
       description,
       chapter: req.params.chapterId,
-    });
+      video: response.secure_url,
+      videoPublicId: response.public_id,
+    };
+
+    console.log(newLesson);
+
+    const lesson = await Lesson.create(newLesson);
 
     res.status(StatusCodes.CREATED).json({ lesson, message: 'Lesson created' });
   } catch (error) {
