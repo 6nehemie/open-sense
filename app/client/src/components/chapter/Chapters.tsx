@@ -25,7 +25,7 @@ const Chapters: React.FC<ChaptersProps> = ({ title, _id, courseId }) => {
   };
 
   return (
-    <div className="mb-8">
+    <div className="mb-12">
       {!editChapterIdOpen ? (
         <div className="mb-4 flex gap-4">
           <h4 className="heading-3 m-0 text-lg">{title}</h4>
@@ -59,7 +59,7 @@ const Chapters: React.FC<ChaptersProps> = ({ title, _id, courseId }) => {
         <div>{/* Lessons already created */}</div>
         {/* Create new lessons */}
 
-        <AddLesson />
+        <AddLesson chapterId={_id} />
       </div>
     </div>
   );

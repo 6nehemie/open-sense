@@ -23,15 +23,15 @@ const Lessons = () => {
           <span>Back</span>
         </Link>
 
-        <div className="mb-10">
-          <div className="flex gap-4 mb-4">
-            <h3 className="heading-3 mb-0">{course.title}</h3>
+        <div className="mb-20">
+          <div className="flex gap-4 mb-2">
+            <h3 className="heading-2 mb-0">{course.title}</h3>
             <Link
               to={`/admin/courses/edit-course/${course._id}`}
-              className="flex gap-1 items-center text-sm font-light text-light-gray hover:text-white transition-colors duration-200"
+              className="flex gap-1  font-light text-light-gray hover:text-white transition-colors duration-200"
             >
               <span>Edit</span>
-              <PencilSquareIcon className="h-6 pb-2" strokeWidth={1.2} />
+              <PencilSquareIcon className="h-5 " strokeWidth={1.2} />
             </Link>
           </div>
 

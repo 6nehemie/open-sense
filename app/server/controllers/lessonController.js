@@ -3,7 +3,16 @@ import Chapter from '../models/ChapterModel.js';
 import { StatusCodes } from 'http-status-codes';
 
 export const createLesson = async (req, res, next) => {
-  const { title, description, video } = req.body;
+  const { title, description } = req.body;
+  const file = req.file;
+
+  console.log('File', file);
+
+  if (!title) {
+    return res
+      .status(400)
+      .json({ message: 'Title and description are required' });
+  }
 
   try {
     const chapter = await Chapter.findById(req.params.chapterId);

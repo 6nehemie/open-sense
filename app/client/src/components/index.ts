@@ -32,3 +32,5 @@ export { default as CreateChapter } from './chapter/CreateChapter';
 export { default as Chapters } from './chapter/Chapters';
 export { default as EditChapter } from './chapter/EditChapter';
 export { default as AddLesson } from './lessons/AddLesson';
+export { default as LessonVideoInput } from './lessons/LessonVideoInput';
+export { default as LessonTextArea } from './lessons/LessonTextArea';
