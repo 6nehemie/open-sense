@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { AddLesson, EditChapter } from '..';
+import { AddLesson, EditChapter, Lessons } from '..';
 import { PencilSquareIcon, TrashIcon } from '@heroicons/react/24/outline';
 import customFetch from '../../utils/customFetch';
 import { useNavigate } from 'react-router-dom';
@@ -57,8 +57,9 @@ const Chapters: React.FC<ChaptersProps> = ({ title, _id, courseId }) => {
 
       <div>
         <div>{/* Lessons already created */}</div>
-        {/* Create new lessons */}
+        <Lessons chapterId={_id} />
 
+        {/* Create new lessons */}
         <AddLesson chapterId={_id} />
       </div>
     </div>

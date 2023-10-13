@@ -46,7 +46,7 @@ const Settings = () => {
   }, [updatedData]);
 
   return (
-    <div className="p-side w-screen pb-12 max-[1183px]:pt-48">
+    <div className="p-side w-screen pb-12 ">
       <div className="max-w-screen-wide w-full mx-auto">
         <h2 className="heading-2">Settings</h2>
         <Form

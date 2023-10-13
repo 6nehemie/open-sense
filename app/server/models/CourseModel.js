@@ -1,7 +1,10 @@
 import mongoose from 'mongoose';
 
 const CourseSchema = new mongoose.Schema({
-  title: String,
+  title: {
+    type: String,
+    unique: true,
+  },
   slogan: String,
   description: String,
   duration: String,

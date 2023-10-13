@@ -15,7 +15,7 @@ const DashboardNavbar: React.FC = () => {
   useClickOutside(menuRef, () => setOpenMenu(false));
 
   return (
-    <div className="fixed top-0 w-full p-side pb-6 z-50">
+    <div className="sticky top-0 w-full p-side pb-6 z-50 backdrop-blur-3xl">
       <nav
         className={`relative flex justify-between items-center max-w-screen-wide mx-auto
 	pt-14 max-lg:pt-10 max-sm:pt-8 font-exo z-50

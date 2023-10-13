@@ -49,7 +49,10 @@ const ManageCourses = () => {
 
               <ul>
                 {courses.map((course) => (
-                  <li className=" items-center relative grid gap-x-2 grid-cols-4 px-4 py-3 font-light border-b-[1px] border-neutral-800 max-[1471px]:grid-cols-3 max-[900px]:grid-cols-2 max-[612px]:grid-cols-1">
+                  <li
+                    key={course._id}
+                    className=" items-center relative grid gap-x-2 grid-cols-4 px-4 py-3 font-light border-b-[1px] border-neutral-800 max-[1471px]:grid-cols-3 max-[900px]:grid-cols-2 max-[612px]:grid-cols-1"
+                  >
                     <div className=" flex items-center gap-4">
                       <div className="aspect-square rounded-md bg-neutral-700 h-8 overflow-hidden">
                         {course.thumbnail && (

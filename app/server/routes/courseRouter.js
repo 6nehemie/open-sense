@@ -5,6 +5,7 @@ import {
   getCourse,
   editCourse,
   deleteCourse,
+  getEntireCourse,
 } from '../controllers/courseController.js';
 import { isAdminMiddleware } from '../middlewares/isAdminMiddleware.js';
 import upload from '../middlewares/multerMiddleware.js';
@@ -25,5 +26,7 @@ router
   .get(getCourse)
   .patch(isAdminMiddleware, upload.single('thumbnail'), editCourse)
   .delete(isAdminMiddleware, deleteCourse);
+
+router.route('/course/:courseId').get(getEntireCourse);
 
 export default router;

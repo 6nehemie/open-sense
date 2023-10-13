@@ -120,3 +120,23 @@ export const deleteCourse = async (req, res) => {
     res.status(StatusCodes.BAD_REQUEST).json({ message: error.message });
   }
 };
+
+export const getEntireCourse = async (req, res, next) => {
+  const course = await Course.findById(req.params.courseId).populate({
+    path: 'chapters',
+    populate: {
+      path: 'lessons',
+    },
+  });
+
+  if (!course)
+    return res
+      .status(StatusCodes.NOT_FOUND)
+      .json({ message: 'Course not found' });
+
+  try {
+    res.status(StatusCodes.OK).json({ course, message: 'success' });
+  } catch (error) {
+    res.status(StatusCodes.BAD_REQUEST).json({ message: error.message });
+  }
+};

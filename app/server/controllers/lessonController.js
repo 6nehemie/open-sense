@@ -3,7 +3,6 @@ import Chapter from '../models/ChapterModel.js';
 import { StatusCodes } from 'http-status-codes';
 import cloudinary from 'cloudinary';
 import * as fs from 'fs/promises';
-import { resolveMx } from 'dns';
 
 export const createLesson = async (req, res, next) => {
   const { title, description } = req.body;
@@ -24,23 +23,30 @@ export const createLesson = async (req, res, next) => {
 
     if (!file) return res.status(400).json({ message: 'Video is required' });
 
-    const response = await cloudinary.v2.uploader.upload_large(file.path, {
-      resource_type: 'video',
+    // Upload large do not return a promise by default
+    const videoResponse = await new Promise((resolve, reject) => {
+      cloudinary.v2.uploader.upload_large(
+        file.path,
+        {
+          resource_type: 'video',
+        },
+        (error, result) => {
+          if (error) {
+            reject(error);
+          }
+          resolve(result);
+        }
+      );
     });
-    console.log('IT PASSES THIS');
     await fs.unlink(file.path);
-
-    // console.log(response);
 
     const newLesson = {
       title,
       description,
       chapter: req.params.chapterId,
-      video: response.secure_url,
-      videoPublicId: response.public_id,
+      video: videoResponse.secure_url,
+      videoPublicId: videoResponse.public_id,
     };
-
-    console.log(newLesson);
 
     const lesson = await Lesson.create(newLesson);
 
@@ -61,18 +67,20 @@ export const getAllLessons = async (req, res) => {
 };
 
 export const updateLesson = async (req, res) => {
-  const { title, description, video } = req.body;
-
-  const newLesson = {
-    title,
-    description,
-  };
+  const { title, description } = req.body;
 
   try {
     const lesson = await Lesson.findById(req.params.lessonId);
+
     if (!lesson) {
       return res.status(404).json({ message: 'Lesson not found' });
     }
+
+    const newLesson = {
+      title,
+      description,
+      // chapter: req.params.chapterId,
+    };
 
     await Lesson.findByIdAndUpdate(req.params.lessonId, newLesson);
 
@@ -84,7 +92,9 @@ export const updateLesson = async (req, res) => {
 
 export const deleteLesson = async (req, res) => {
   try {
-    await Lesson.findByIdAndDelete(req.params.lessonId);
+    const lesson = await Lesson.findByIdAndDelete(req.params.lessonId);
+    await cloudinary.v2.uploader.destroy(lesson.videoPublicId);
+
     res.status(StatusCodes.OK).json({ message: 'Lesson deleted' });
   } catch (error) {
     res.status(StatusCodes.BAD_REQUEST).json({ message: error.message });

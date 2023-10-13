@@ -12,3 +12,5 @@ export { default as ManageCourses } from './ManageCourses';
 export { default as NewCourse } from './NewCourse';
 export { default as EditCourse } from './EditCourse';
 export { default as Lessons } from './Lessons';
+export { default as StreamLayout } from './StreamLayout';
+export { default as Stream } from './Stream';

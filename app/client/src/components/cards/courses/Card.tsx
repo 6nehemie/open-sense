@@ -1,16 +1,25 @@
+import { Link } from 'react-router-dom';
 import { coursesFeatured } from '../../../constants';
 
 interface CardProps {
+  courseId: string;
   label: string;
   slogan: string;
   duration?: string;
   imageSrc: string | null;
 }
 
-const Card: React.FC<CardProps> = ({ label, slogan, duration, imageSrc }) => {
+const Card: React.FC<CardProps> = ({
+  label,
+  slogan,
+  duration,
+  imageSrc,
+  courseId,
+}) => {
   return (
-    <div
-      className={`relative h-[379px] w-[271px] aspect-square overflow-hidden rounded-xl`}
+    <Link
+      to={`courses/${courseId}`}
+      className={`relative h-[379px] w-[271px] aspect-square overflow-hidden rounded-xl hover:opacity-50 backdrop-blur-lg transition-all duration-200`}
     >
       {imageSrc && (
         <img
@@ -33,7 +42,7 @@ const Card: React.FC<CardProps> = ({ label, slogan, duration, imageSrc }) => {
         <p className="text-[15px] font-normal max-w-[190px] z-20">{slogan}</p>
         <p className="font-thin text-[12px] text-light-gray z-20">{duration}</p>
       </div>
-    </div>
+    </Link>
   );
 };
 export default Card;

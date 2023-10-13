@@ -8,7 +8,7 @@ const Browse = () => {
   console.log(courses);
 
   return (
-    <div className="relative min-h-screen grid login-grid">
+    <div className="relative mt-16">
       <div className="relative flex flex-col items-center justify-center row-start-2">
         <div className="text-center p-side">
           <h1 className="heading-2 mb-0">CHOOSE YOUR PATH.</h1>

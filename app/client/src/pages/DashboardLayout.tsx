@@ -27,13 +27,13 @@ const DashboardLayout = () => {
   return (
     <DashboardContext.Provider value={{ user, courses }}>
       <div
-        className={`relative min-h-screen flex bg-dark-gray bg-opacity-70
+        className={`relative min-h-screen flex flex-col bg-dark-gray bg-opacity-70
       ${dynamicBackground ? 'max-sm:bg-white max-sm:text-dark-gray' : ''}
     `}
       >
         <DashboardNavbar />
 
-        <div className="relative flex flex-col items-center justify-center row-start-2">
+        <div className="relative flex flex-col items-center justify-center">
           <Outlet />
         </div>
       </div>

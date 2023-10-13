@@ -74,6 +74,19 @@ body {
     }
   }
 
+  .streamLayout {
+    position: relative;
+    min-height: calc(100vh - 128px);
+  }
+
+  .videoSize {
+    max-height: calc(100vh - 128px - 30px);
+  }
+
+  .sidebar {
+    height: calc(100vh - 168px);
+  }
+
   /* Gap layout */
   .gap-layout {
     gap: 240px;

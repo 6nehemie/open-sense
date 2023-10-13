@@ -14,6 +14,8 @@ import {
   Plans,
   Settings,
   SignUp,
+  Stream,
+  StreamLayout,
 } from './pages';
 import {
   addCourseAction,
@@ -30,6 +32,7 @@ import {
   getUsersLoader,
   lessonLoader,
 } from './utils/loaders';
+import { streamLoader } from './utils/loaders/streamLoader';
 
 const router = createBrowserRouter([
   {
@@ -47,6 +50,17 @@ const router = createBrowserRouter([
         children: [
           { index: true, element: <Browse /> },
           { path: 'settings', element: <Settings />, action: settingAction },
+          {
+            path: 'courses/:courseId',
+            element: <StreamLayout />,
+            children: [
+              {
+                path: ':lessonId',
+                element: <Stream />,
+                loader: streamLoader,
+              },
+            ],
+          },
         ],
       },
       {

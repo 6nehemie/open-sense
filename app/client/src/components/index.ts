@@ -34,3 +34,6 @@ export { default as EditChapter } from './chapter/EditChapter';
 export { default as AddLesson } from './lessons/AddLesson';
 export { default as LessonVideoInput } from './lessons/LessonVideoInput';
 export { default as LessonTextArea } from './lessons/LessonTextArea';
+export { default as Lessons } from './lessons/Lessons';
+export { default as EditLesson } from './lessons/EditLesson';
+export { default as Sidebar } from './lessons/Sidebar';

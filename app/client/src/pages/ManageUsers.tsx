@@ -31,7 +31,10 @@ const ManageUsers = () => {
 
               <ul>
                 {users.map((user) => (
-                  <li className=" items-center relative grid grid-cols-4 px-4 py-3 font-light border-b-[1px] border-neutral-800 max-[1150px]:grid-cols-3 max-[900px]:grid-cols-2 max-[612px]:grid-cols-1">
+                  <li
+                    key={user._id}
+                    className=" items-center relative grid grid-cols-4 px-4 py-3 font-light border-b-[1px] border-neutral-800 max-[1150px]:grid-cols-3 max-[900px]:grid-cols-2 max-[612px]:grid-cols-1"
+                  >
                     <div className=" flex items-center gap-4">
                       <div className="aspect-square rounded-full bg-neutral-700 h-8 overflow-hidden">
                         {user?.avatar && (
