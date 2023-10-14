@@ -3,3 +3,4 @@ export { adminLoader, getUsersLoader } from './adminLoader';
 export { getAllCoursesLoader, getSingleCourseLoader } from './courseLoader';
 export { browseLoader } from './browseLoader';
 export { lessonLoader } from './lessonLoader';
+export { streamLoader } from './streamLoader';

@@ -60,6 +60,20 @@ export const createLesson = async (req, res, next) => {
   }
 };
 
+export const getLesson = async (req, res) => {
+  try {
+    const lesson = await Lesson.findById(req.params.lessonId);
+
+    if (!lesson) {
+      return res.status(404).json({ message: 'Lesson not found' });
+    }
+
+    res.status(StatusCodes.OK).json({ lesson });
+  } catch (error) {
+    res.status(StatusCodes.BAD_REQUEST).json({ message: error.message });
+  }
+};
+
 export const getAllLessons = async (req, res) => {
   try {
     const lessons = await Lesson.find({ chapter: req.params.chapterId });

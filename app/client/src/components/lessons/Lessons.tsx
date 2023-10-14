@@ -34,7 +34,7 @@ const Lessons: React.FC<LessonProps> = ({ chapterId }) => {
 
   const handleLessonRemoval = async (lessonId: string) => {
     try {
-      await customFetch.delete(`/lessons/${lessonId}`);
+      await customFetch.delete(`/lessons/lesson/${lessonId}`);
       console.log('Lesson deleted');
     } catch (error) {
       return console.log(error);

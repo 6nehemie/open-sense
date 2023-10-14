@@ -1,6 +1,6 @@
 import { ArrowLongLeftIcon, PhotoIcon } from '@heroicons/react/24/outline';
 import { Form, Link, useActionData, useLoaderData } from 'react-router-dom';
-import { AdminInput, AdminTextArea, Card } from '../components';
+import { AdminInput, AdminTextArea, CardPreview } from '../components';
 import { useEffect, useState } from 'react';
 import { Course } from '../types/courseType';
 
@@ -121,7 +121,7 @@ const EditCourse = () => {
           </div>
           <div className="w-max">
             <h3 className="heading-3">Preview</h3>
-            <Card
+            <CardPreview
               label={formValues.title}
               slogan={formValues.slogan}
               imageSrc={thumbnailUrl}

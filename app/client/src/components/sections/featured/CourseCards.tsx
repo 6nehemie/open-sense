@@ -1,5 +1,5 @@
 import { coursesFeatured } from '../../../constants';
-import { Card, CardPreview } from '../..';
+import { CardPreview } from '../..';
 import { useRef } from 'react';
 import { ArrowLeftIcon, ArrowRightIcon } from '@heroicons/react/20/solid';
 

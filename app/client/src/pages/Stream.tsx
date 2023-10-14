@@ -1,43 +1,48 @@
+import { useParams } from 'react-router-dom';
 import Video from '../components/sections/video/Video';
+import { useEffect, useState } from 'react';
+import { LessonType } from '../types/courseContextType';
+import customFetch from '../utils/customFetch';
+import { AxiosError } from 'axios';
 
 const Stream = () => {
+  const { lessonId } = useParams();
+  const [currentLesson, setCurrentLesson] = useState({} as LessonType);
+
+  const getLesson = async (lessonId: string) => {
+    try {
+      const {
+        data: { lesson },
+      } = await customFetch.get(`/lessons/lesson/${lessonId}`);
+      setCurrentLesson(lesson);
+    } catch (error) {
+      if (error instanceof AxiosError) {
+        console.log(error.response?.data?.message);
+        return error?.response?.data?.message || 'Something went wrong';
+      }
+      return error || 'Something went wrong';
+    }
+  };
+
+  useEffect(() => {
+    if (lessonId) {
+      // get lesson
+      getLesson(lessonId);
+    }
+  }, [lessonId]);
+
+  const description = currentLesson.description.split('\n');
+
   return (
     <div className="w-full pb-12">
-      <Video />
+      <Video videoUrl={currentLesson.video} />
       <div className="max-w-screen-wide mx-auto p-side">
         <div className="">
-          <h1 className="heading-2 font-exo">Course Title</h1>
+          <h1 className="heading-2 font-exo">{currentLesson.title}</h1>
           <div className="flex flex-col gap-4 font-exo">
-            <p className=" text-light-gray">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Eget
-              nulla facilisi etiam dignissim diam quis enim. Viverra vitae
-              congue eu consequat ac. Senectus et netus et malesuada fames ac
-              turpis egestas integer. Vitae tortor condimentum lacinia quis vel.
-              Pellentesque pulvinar pellentesque habitant morbi tristique.
-              Dictum fusce ut placerat orci nulla pellentesque. Aliquet nibh
-              praesent tristique magna. Suspendisse interdum consectetur libero
-              id faucibus nisl tincidunt eget nullam. In ante metus dictum at.
-              Adipiscing diam donec adipiscing tristique. Eget gravida cum
-              sociis natoque penatibus et magnis dis parturient. Eu sem integer
-              vitae justo. Fames ac turpis egestas maecenas pharetra convallis
-              posuere morbi leo.
-            </p>
-            <p className=" text-light-gray ">
-              Duis ultricies lacus sed turpis tincidunt. Aliquam purus sit amet
-              luctus venenatis lectus. Viverra nibh cras pulvinar mattis nunc.
-              Sagittis aliquam malesuada bibendum arcu. Dignissim convallis
-              aenean et tortor at risus. Massa tincidunt dui ut ornare. Nibh
-              tellus molestie nunc non blandit massa. A diam sollicitudin tempor
-              id eu nisl nunc mi ipsum. Elementum nibh tellus molestie nunc non
-              blandit massa enim nec. Bibendum neque egestas congue quisque.
-              Scelerisque varius morbi enim nunc faucibus a. Viverra justo nec
-              ultrices dui sapien eget. Adipiscing elit pellentesque habitant
-              morbi tristique senectus. Condimentum vitae sapien pellentesque
-              habitant morbi tristique senectus. Egestas purus viverra accumsan
-              in nisl nisi scelerisque eu ultrices. Ultricies integer quis
-              auctor elit.
-            </p>
+            {description.map((desc, index) => (
+              <p key={index}>{desc}</p>
+            ))}
           </div>
         </div>
       </div>

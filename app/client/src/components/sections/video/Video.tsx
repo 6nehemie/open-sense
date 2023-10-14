@@ -1,8 +1,12 @@
-const Video = () => {
+type VideoProps = {
+  videoUrl: string;
+};
+
+const Video: React.FC<VideoProps> = ({ videoUrl }) => {
   return (
     <div className="p-side py-6 mx-auto">
       <video
-        src="https://res.cloudinary.com/db7ums0sv/video/upload/v1697184568/uvqyekcacclyefj6niyh.mp4"
+        src={videoUrl}
         controls
         preload="auto"
         controlsList="nodownload"

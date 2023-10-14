@@ -19,7 +19,6 @@ const DashboardLayout = () => {
     data: User;
     courses: Course[];
   };
-  console.log(courses);
 
   const pathname = useLocation();
   const dynamicBackground = pathname.pathname === '/browse/settings';

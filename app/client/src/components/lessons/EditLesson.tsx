@@ -45,7 +45,7 @@ const EditLesson: React.FC<EditLessonProps> = ({
     };
 
     try {
-      await customFetch.patch(`/lessons/${lessonId}`, lessonUpdate);
+      await customFetch.patch(`/lessons/lesson/${lessonId}`, lessonUpdate);
     } catch (error) {
       setAddLessonLoading(false);
       return console.log(error);

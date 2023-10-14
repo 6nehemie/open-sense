@@ -1,5 +1,5 @@
 import { coursesFeatured } from '../../../constants';
-import { Card } from '../..';
+import { CardPreview } from '../..';
 import { useRef } from 'react';
 // import { ArrowLeftIcon, ArrowRightIcon } from '@heroicons/react/20/solid';
 import {
@@ -59,7 +59,7 @@ const Courses = () => {
         >
           <div className=" absolute flex gap-[21px] max-[1620px]:p-side">
             {coursesFeatured.courses.map((course) => (
-              <Card
+              <CardPreview
                 key={course.label}
                 label={course.label}
                 slogan={course.slogan}

@@ -53,6 +53,7 @@ const router = createBrowserRouter([
           {
             path: 'courses/:courseId',
             element: <StreamLayout />,
+            loader: streamLoader,
             children: [
               {
                 path: ':lessonId',

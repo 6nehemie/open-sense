@@ -3,6 +3,7 @@ import {
   createLesson,
   deleteLesson,
   getAllLessons,
+  getLesson,
   updateLesson,
 } from '../controllers/lessonController.js';
 import upload from '../middlewares/multerMiddleware.js';
@@ -13,6 +14,10 @@ router
   .route('/:chapterId')
   .post(upload.single('lesson'), createLesson)
   .get(getAllLessons);
-router.route('/:lessonId').patch(updateLesson).delete(deleteLesson);
+router
+  .route('/lesson/:lessonId')
+  .get(getLesson)
+  .patch(updateLesson)
+  .delete(deleteLesson);
 
 export default router;
