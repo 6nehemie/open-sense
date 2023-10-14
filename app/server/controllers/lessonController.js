@@ -50,6 +50,10 @@ export const createLesson = async (req, res, next) => {
 
     const lesson = await Lesson.create(newLesson);
 
+    // Add the new lesson to the lessons array of the parent chapter
+    chapter.lessons.push(lesson._id);
+    await chapter.save();
+
     res.status(StatusCodes.CREATED).json({ lesson, message: 'Lesson created' });
   } catch (error) {
     res.status(StatusCodes.BAD_REQUEST).json({ message: error.message });

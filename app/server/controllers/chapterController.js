@@ -2,39 +2,29 @@ import { StatusCodes } from 'http-status-codes';
 import Chapter from '../models/ChapterModel.js';
 import Course from '../models/CourseModel.js';
 
-// title: String,
-// chapterNumber: Number,
-// description: String,
-// course: {
-//   type: mongoose.Schema.Types.ObjectId,
-//   ref: 'Course',
-// },
-// lessons: [
-//   {
-// 	type: mongoose.Schema.Types.ObjectId,
-// 	ref: 'Lesson',
-//   },
-// ],
-
 export const createChapter = async (req, res, next) => {
-  const { title, chapterNumber, description } = req.body;
-
-  const course = await Course.findById(req.params.courseId);
-
-  if (!course)
-    return res
-      .status(StatusCodes.NOT_FOUND)
-      .json({ message: 'Course not found' });
-
-  const createChapter = {
-    title,
-    // chapterNumber,
-    description,
-    course: req.params.courseId,
-  };
+  const { title, description } = req.body;
 
   try {
+    const course = await Course.findById(req.params.courseId);
+
+    if (!course)
+      return res
+        .status(StatusCodes.NOT_FOUND)
+        .json({ message: 'Course not found' });
+
+    const createChapter = {
+      title,
+      description,
+      course: req.params.courseId,
+    };
+
     const chapter = await Chapter.create(createChapter);
+
+    // Add the new chapter to the chapters array of the parent course
+    course.chapters.push(chapter._id);
+    await course.save();
+
     res
       .status(StatusCodes.CREATED)
       .json({ chapter, message: 'Chapter created' });
