@@ -4,6 +4,7 @@ import { AdminInput, AdminTextArea, CardPreview } from '../components';
 import { useEffect, useState } from 'react';
 
 const NewCourse = () => {
+  document.title = `Add Course`;
   const errors = useActionData();
   const [responseError, setResponseError] = useState<string | null>(null);
   const [thumbnailUrl, setThumbnailUrl] = useState<string | null>(null);

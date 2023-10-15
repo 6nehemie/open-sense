@@ -10,6 +10,7 @@ interface LoaderData {
 }
 
 const Lessons = () => {
+  document.title = `Manage Lessons`;
   const { course, chapters } = useLoaderData() as LoaderData;
 
   return (

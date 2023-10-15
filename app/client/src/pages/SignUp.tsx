@@ -11,6 +11,7 @@ import { useEffect, useState } from 'react';
 import { registerErrors } from '../utils/errors/registerErrors';
 
 const SignUp = () => {
+  document.title = 'Open Sense | Sign Up';
   const errors = useActionData() as string;
   const navigation = useNavigation();
   const loading = navigation.state === 'submitting';

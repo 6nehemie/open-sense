@@ -12,6 +12,7 @@ interface PostInput {
 }
 
 const Settings = () => {
+  document.title = `Settings`;
   const { user } = useContext(DashboardContext);
   const updatedData = useActionData() as PostInput;
 

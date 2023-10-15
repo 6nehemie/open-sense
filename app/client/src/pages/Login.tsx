@@ -12,6 +12,7 @@ import { useEffect, useState } from 'react';
 import { loginErrors } from '../utils/errors/loginErrors';
 
 const Login = () => {
+  document.title = 'Open Sense | Log In';
   const errors = useActionData() as string;
   const navigation = useNavigation();
   const loading = navigation.state === 'submitting';

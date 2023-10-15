@@ -8,6 +8,7 @@ export const CourseContext = createContext<CourseContextType | null>(null);
 const StreamLayout = () => {
   const params = useParams();
   const course = useLoaderData() as CourseType;
+  document.title = `${course.title}`;
 
   const lessonsArr = [];
 

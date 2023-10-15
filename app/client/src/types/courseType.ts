@@ -8,6 +8,6 @@ export interface Course {
   description?: string;
   thumbnail: string;
   createdAt: string | Date;
-  chapters: Chapter[];
+  chapters?: Chapter[];
 }
 // .chapters[0].lessons[0]._id

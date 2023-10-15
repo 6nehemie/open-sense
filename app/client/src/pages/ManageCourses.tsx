@@ -18,6 +18,7 @@ interface Course {
 }
 
 const ManageCourses = () => {
+  document.title = `Manage Courses`;
   const { courses } = useLoaderData() as { courses: Course[] };
 
   return (

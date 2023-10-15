@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { Course } from '../types/courseType';
 
 const EditCourse = () => {
+  document.title = `Edit course`;
   const errors = useActionData();
   const [responseError, setResponseError] = useState<string | null>(null);
   const course = useLoaderData() as Course;

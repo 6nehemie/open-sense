@@ -5,7 +5,7 @@ import { DashboardContext } from './DashboardLayout';
 
 const Browse = () => {
   const { courses } = useContext(DashboardContext);
-  // console.log(courses);
+  document.title = 'Open Sense | Browse';
 
   return (
     <div className="relative mt-20">

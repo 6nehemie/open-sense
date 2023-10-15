@@ -1,5 +1,5 @@
 import { Outlet, useLoaderData } from 'react-router-dom';
-import AdminNavbar from '../components/navbar/adminNavbar';
+import AdminNavbar from '../components/navbar/AdminNavbar';
 
 interface User {
   name: string;
@@ -9,6 +9,7 @@ interface User {
 }
 
 const Admin = () => {
+  document.title = `Admin`;
   const user = useLoaderData() as User;
 
   return (

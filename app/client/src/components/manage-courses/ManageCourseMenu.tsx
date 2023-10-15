@@ -16,6 +16,7 @@ interface MenuProps {
 }
 
 const ManageCourseMenu: React.FC<MenuProps> = ({ course }) => {
+  document.title = `Manage Courses`;
   const navigate = useNavigate();
   const [menuIsOpen, setMenuIsOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);

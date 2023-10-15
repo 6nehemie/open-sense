@@ -10,6 +10,8 @@ const Stream = () => {
   const [currentLesson, setCurrentLesson] = useState({} as LessonType);
   const [description, setDescription] = useState<string[]>([]);
 
+  document.title = `${currentLesson.title}`;
+
   const getLesson = async (lessonId: string) => {
     try {
       const {
