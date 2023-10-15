@@ -5,11 +5,7 @@ const WatchedCourseSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Course',
   },
-  chapter: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Chapter',
-  },
-  lesson: {
+  lastWatched: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Lesson',
   },

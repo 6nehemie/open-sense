@@ -15,7 +15,14 @@ export const registerUser = async (req, res) => {
     role: 'user',
   });
 
+  const token = createToken(user);
+
   res
+    .cookie('jwt', token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      maxAge: 24 * 60 * 60 * 1000, // 1 day
+    })
     .status(StatusCodes.CREATED)
     .json({ user, message: 'User created successfully' });
 };
@@ -38,4 +45,8 @@ export const logoutUser = async (req, res) => {
     .clearCookie('jwt')
     .status(StatusCodes.OK)
     .json({ message: 'User logged out successfully' });
+};
+
+export const isLoggedIn = async (req, res) => {
+  return res.status(StatusCodes.OK).json({ user: req.user });
 };

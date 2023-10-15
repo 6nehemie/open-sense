@@ -5,7 +5,14 @@ import * as fs from 'fs/promises';
 
 export const getAllCourses = async (req, res) => {
   try {
-    const courses = await Course.find().select('-__v -thumbnailPublicId');
+    const courses = await Course.find()
+      .select('-__v -thumbnailPublicId')
+      .populate({
+        path: 'chapters',
+        populate: {
+          path: 'lessons',
+        },
+      });
     res.status(StatusCodes.OK).json({ courses });
   } catch (error) {
     res.status(StatusCodes.BAD_REQUEST).json({ message: error.message });
@@ -25,11 +32,6 @@ export const getCourse = async (req, res) => {
 
 export const addCourse = async (req, res) => {
   const { title, slogan, description, duration } = req.body;
-
-  // if (!title || !slogan || !duration || !req.file)
-  //   return res
-  //     .status(StatusCodes.BAD_REQUEST)
-  //     .json({ message: 'All fields noted "(required)*" must not be empty.' });
 
   const response = await cloudinary.v2.uploader.upload(req.file.path);
   await fs.unlink(req.file.path);
@@ -54,7 +56,6 @@ export const addCourse = async (req, res) => {
 
 export const editCourse = async (req, res) => {
   const { title, slogan, description, duration } = req.body;
-  console.log(req.body);
 
   if (!title)
     return res
@@ -68,11 +69,6 @@ export const editCourse = async (req, res) => {
     return res
       .status(StatusCodes.BAD_REQUEST)
       .json({ message: 'Duration is required' });
-
-  // if (!title || !slogan || !duration)
-  //   return res
-  //     .status(StatusCodes.BAD_REQUEST)
-  //     .json({ message: 'All fields noted "(required)*" must not be empty.' });
 
   const course = {
     title,
