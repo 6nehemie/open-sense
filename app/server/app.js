@@ -21,7 +21,6 @@ dotenv.config();
 // Public
 import path, { dirname } from 'path';
 import { fileURLToPath } from 'url';
-import { isAdminMiddleware } from './middlewares/isAdminMiddleware.js';
 
 cloudinary.v2.config({
   cloud_name: process.env.CLOUD_NAME,
@@ -63,5 +62,9 @@ app.use('*', (req, res) => {
 
 // Catch errors without crashing the server
 app.use(errorHandlerMiddleware);
+
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, './public/index.html'));
+});
 
 export default app;
