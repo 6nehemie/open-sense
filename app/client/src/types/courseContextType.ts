@@ -6,14 +6,14 @@ export type LessonType = {
   _id: string;
 };
 
-type ChapterType = {
+export type ChapterType = {
   _id: string;
   title: string;
   course: string;
   lessons: LessonType[];
 };
 
-export type CourseContextType = {
+export type CourseType = {
   _id: string;
   title: string;
   chapters: ChapterType[];
@@ -21,4 +21,10 @@ export type CourseContextType = {
   duration: string;
   slogan: string;
   thumbnail: string;
+};
+
+export type CourseContextType = {
+  course: CourseType;
+  nextLesson: LessonType;
+  previousLesson: LessonType;
 };

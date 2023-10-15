@@ -8,13 +8,16 @@ import { AxiosError } from 'axios';
 const Stream = () => {
   const { lessonId } = useParams();
   const [currentLesson, setCurrentLesson] = useState({} as LessonType);
+  const [description, setDescription] = useState<string[]>([]);
 
   const getLesson = async (lessonId: string) => {
     try {
       const {
         data: { lesson },
       } = await customFetch.get(`/lessons/lesson/${lessonId}`);
+
       setCurrentLesson(lesson);
+      setDescription(lesson.description.split('\n'));
     } catch (error) {
       if (error instanceof AxiosError) {
         console.log(error.response?.data?.message);
@@ -30,8 +33,6 @@ const Stream = () => {
       getLesson(lessonId);
     }
   }, [lessonId]);
-
-  const description = currentLesson.description.split('\n');
 
   return (
     <div className="w-full pb-12">

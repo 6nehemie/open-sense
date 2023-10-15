@@ -64,6 +64,7 @@ const DashboardCourses: React.FC<CoursesProps> = ({ courses }) => {
           <div className=" absolute flex gap-[21px] max-[1620px]:p-side">
             {courses.map((course) => (
               <Card
+                lessonId={course.chapters[0]?.lessons[0]._id}
                 courseId={course._id}
                 key={course.title}
                 label={course.title}

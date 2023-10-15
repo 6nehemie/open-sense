@@ -33,6 +33,7 @@ import {
   lessonLoader,
 } from './utils/loaders';
 import { streamLoader } from './utils/loaders/streamLoader';
+import { loginLoader } from './utils/loaders/loginLoader';
 
 const router = createBrowserRouter([
   {
@@ -40,8 +41,18 @@ const router = createBrowserRouter([
     element: <HomeLayout />,
     children: [
       { index: true, element: <Landing /> },
-      { path: 'sign-in', element: <Login />, action: loginAction },
-      { path: 'sign-up', element: <SignUp />, action: registerAction },
+      {
+        path: 'sign-in',
+        element: <Login />,
+        action: loginAction,
+        loader: loginLoader,
+      },
+      {
+        path: 'sign-up',
+        element: <SignUp />,
+        action: registerAction,
+        loader: loginLoader,
+      },
       { path: 'plans', element: <Plans /> },
       {
         path: 'browse',

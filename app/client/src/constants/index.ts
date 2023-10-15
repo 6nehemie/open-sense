@@ -19,35 +19,40 @@ export const coursesFeatured = {
       label: 'Estate Pro',
       slogan: 'The Blue Print Of Wealth',
       duration: '26 hours',
-      imageSrc: '/courses/course-1.png',
+      imageSrc:
+        'https://res.cloudinary.com/db7ums0sv/image/upload/v1697392590/x2rfuwodiexaq1vy5c1l.png',
       publishDate: 'May 12, 2021',
     },
     {
       label: 'Blockchain Expert',
       slogan: 'The Currency Of Tomorrow',
       duration: '20 hours',
-      imageSrc: '/courses/course-2.png',
+      imageSrc:
+        'https://res.cloudinary.com/db7ums0sv/image/upload/v1697392590/gpnjfatgyku4lwnn3yp3.png',
       publishDate: 'May 12, 2021',
     },
     {
       label: 'Finance Elite',
       slogan: 'Mastering The Mechanics Of Money',
       duration: '14 hours',
-      imageSrc: '/courses/course-3.png',
+      imageSrc:
+        'https://res.cloudinary.com/db7ums0sv/image/upload/v1697392590/qgvarcolywi1pqlps9cc.png',
       publishDate: 'May 12, 2021',
     },
     {
       label: 'Chart Maestro',
       slogan: 'Navigating The Nuances Of Numbers',
       duration: '38 hours',
-      imageSrc: '/courses/course-4.png',
+      imageSrc:
+        'https://res.cloudinary.com/db7ums0sv/image/upload/v1697392589/m1wg6ek2cm0gmimzf5qy.png',
       publishDate: 'May 12, 2021',
     },
     {
       label: 'Entrepreneur 101',
       slogan: 'Unlocking Success Through the Right Mindset.',
       duration: '38 hours',
-      imageSrc: '/courses/course-5.png',
+      imageSrc:
+        'https://res.cloudinary.com/db7ums0sv/image/upload/v1697392589/cpmig6xhlpn0rtrsow7l.png',
       publishDate: 'May 12, 2021',
     },
   ],
@@ -58,13 +63,15 @@ export const events = {
   featured: [
     {
       date: 'December 12',
-      imageSrc: '/events/event-2.png',
+      imageSrc:
+        'https://res.cloudinary.com/db7ums0sv/image/upload/v1697393666/events/naif1aeevg5ysisif4kg.png',
       label: 'Live Cooking Class',
       text: 'December is a busy month join us to prepare nice dish.',
     },
     {
       date: 'December 23',
-      imageSrc: '/events/event-1.png',
+      imageSrc:
+        'https://res.cloudinary.com/db7ums0sv/image/upload/v1697393667/events/dwlu9ap3wnqyhuhxb1pa.png',
       label: 'Podcast Interview',
       text: 'Meet one of our successful alumni and learn his story.',
     },
@@ -192,37 +199,43 @@ export const reviews = {
   userReviews: [
     {
       name: "Liam O'Connell",
-      imageSrc: '/users/user-1.png',
+      imageSrc:
+        'https://res.cloudinary.com/db7ums0sv/image/upload/v1697393066/users/fooqjhbwm3ititqrilyb.png',
       country: 'Dublin, Ireland',
       text: 'The community is vibrant and supportive. Every time I had a doubt, someone was there to help. The courses are comprehensive and well-structured. Two thumbs up!',
     },
     {
-      name: 'Sophia Martinez',
-      imageSrc: '/users/user-2.png',
+      name: 'Sophia Lee',
+      imageSrc:
+        'https://res.cloudinary.com/db7ums0sv/image/upload/v1697393359/users/h0xuiqobjitwyxop2yed.png',
       country: 'Madrid, Spain',
       text: "I've taken multiple courses on different platforms, but the content and support here are unparalleled. I've not only gained knowledge but also confidence in my skills. Highly recommend!",
     },
     {
       name: 'Ava Kim',
-      imageSrc: '/users/user-3.png',
+      imageSrc:
+        'https://res.cloudinary.com/db7ums0sv/image/upload/v1697393066/users/xbiezvje0yqajouzncfu.png',
       country: 'Seoul, South Korea',
       text: 'I was hesitant at first, but now I can confidently say that enrolling here was one of the best decisions of my professional life. The insights and real-world applications are invaluable.',
     },
     {
       name: 'Ethan Patel',
-      imageSrc: '/users/user-4.png',
+      imageSrc:
+        'https://res.cloudinary.com/db7ums0sv/image/upload/v1697393507/users/vqzar2r82clfuppinxgc.png',
       country: 'Mumbai, India',
       text: "What sets this platform apart is the real-world relevance of the courses. It's not just theory; there's a strong emphasis on practical application, which I appreciate.",
     },
     {
       name: 'Olivia Brown',
-      imageSrc: '/users/user-5.png',
+      imageSrc:
+        'https://res.cloudinary.com/db7ums0sv/image/upload/v1697393067/users/chjwl6rl0z0oqkuc4z3k.png',
       country: 'Sydney, Australia',
       text: "The instructors are top-notch, and the course materials are up-to-date with the latest trends and technologies. I've been able to apply what I've learned directly to my job.",
     },
     {
       name: 'Jackson Lee',
-      imageSrc: '/users/user-6.png',
+      imageSrc:
+        'https://res.cloudinary.com/db7ums0sv/image/upload/v1697393068/users/qitomzkwqzs7asnzb4ya.png',
       country: 'San Francisco, USA',
       text: "Every course I've taken has exceeded my expectations. The content is clear, the instructors are knowledgeable, and I've seen a tangible improvement in my skills.",
     },

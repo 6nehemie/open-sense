@@ -3,13 +3,14 @@ import { CourseContext } from '../../pages/StreamLayout';
 import { Link, useParams } from 'react-router-dom';
 import { ArrowLeftIcon, Bars3Icon } from '@heroicons/react/24/outline';
 import { useClickOutside } from '../../hooks';
+import { CourseContextType } from '../../types/courseContextType';
 
 const Sidebar = () => {
   const params = useParams();
 
   const sidebarRef = useRef<HTMLDivElement>(null);
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const course = useContext(CourseContext);
+  const { course } = useContext(CourseContext) as CourseContextType;
 
   useClickOutside(sidebarRef, () => {
     setSidebarOpen(false);
@@ -37,7 +38,7 @@ const Sidebar = () => {
             {course?.chapters.map((chapter) => (
               <div key={chapter._id}>
                 <div className="p-5 py-4 bg-neutral-800 rounded-xl mb-2">
-                  <h1 className="text-2xl font-semibold max-md:text-xl max-sm:text-lg">
+                  <h1 className="text-xl max-md:text-xl max-sm:text-lg">
                     {chapter.title}
                   </h1>
                 </div>
@@ -61,7 +62,7 @@ const Sidebar = () => {
         </div>
         <div
           onClick={handleSidebar}
-          className="bg-neutral-700 h-max mt-2 p-4 rounded-r-lg hover:bg-neutral-800 transition-colors duration-200 cursor-pointer overflow-hidden shadow-lg shadow-neutral-800"
+          className="bg-neutral-800 h-max mt-2 p-4 rounded-r-lg hover:bg-neutral-700 transition-colors duration-200 cursor-pointer overflow-hidden shadow-lg shadow-neutral-800"
         >
           {!sidebarOpen ? (
             <Bars3Icon className="h-6 max-md:h-5 max-sm:h-4" />

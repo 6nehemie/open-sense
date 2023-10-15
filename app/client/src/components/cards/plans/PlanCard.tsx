@@ -70,7 +70,7 @@ const PlanCard: React.FC<PlanCardProps> = ({
       </div>
 
       <Link
-        to={'.'}
+        to={'/sign-up'}
         className="max-[1340px]:text-sm mt-auto w-max transition-colors duration-200 bg-red-light px-7 py-2 rounded-full hover:bg-red-light-dark hover:text-white"
       >
         Sign Up

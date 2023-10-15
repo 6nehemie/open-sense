@@ -12,7 +12,7 @@ interface PostInput {
 }
 
 const Settings = () => {
-  const user = useContext(DashboardContext);
+  const { user } = useContext(DashboardContext);
   const updatedData = useActionData() as PostInput;
 
   const [updateError, setUpdateError] = useState<{

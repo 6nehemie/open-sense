@@ -1,3 +1,5 @@
+import { Chapter } from './chapterType';
+
 export interface Course {
   _id: string;
   title: string;
@@ -6,4 +8,6 @@ export interface Course {
   description?: string;
   thumbnail: string;
   createdAt: string | Date;
+  chapters: Chapter[];
 }
+// .chapters[0].lessons[0]._id

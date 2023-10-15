@@ -1,15 +1,34 @@
-import { Outlet, useLoaderData } from 'react-router-dom';
+import { Outlet, useLoaderData, useParams } from 'react-router-dom';
 import { Sidebar } from '../components';
 import { createContext } from 'react';
-import { CourseContextType } from '../types/courseContextType';
+import { CourseContextType, CourseType } from '../types/courseContextType';
 
 export const CourseContext = createContext<CourseContextType | null>(null);
 
 const StreamLayout = () => {
-  const course = useLoaderData() as CourseContextType;
+  const params = useParams();
+  const course = useLoaderData() as CourseType;
+
+  const lessonsArr = [];
+
+  for (let i = 0; i < course.chapters.length; i++) {
+    for (let j = 0; j < course.chapters[i].lessons.length; j++) {
+      lessonsArr.push(course.chapters[i].lessons[j]);
+    }
+  }
+
+  // Return the previous and next lesson
+  const previousLesson =
+    lessonsArr[
+      lessonsArr.findIndex((lesson) => lesson._id === params.lessonId) - 1
+    ];
+  const nextLesson =
+    lessonsArr[
+      lessonsArr.findIndex((lesson) => lesson._id === params.lessonId) + 1
+    ];
 
   return (
-    <CourseContext.Provider value={course}>
+    <CourseContext.Provider value={{ course, nextLesson, previousLesson }}>
       <div className="relative streamLayout w-screen">
         {/* test */}
         <Outlet />

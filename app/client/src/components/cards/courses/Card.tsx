@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { coursesFeatured } from '../../../constants';
 
 interface CardProps {
+  lessonId?: string;
   courseId: string;
   label: string;
   slogan: string;
@@ -10,6 +11,7 @@ interface CardProps {
 }
 
 const Card: React.FC<CardProps> = ({
+  lessonId,
   label,
   slogan,
   duration,
@@ -18,7 +20,7 @@ const Card: React.FC<CardProps> = ({
 }) => {
   return (
     <Link
-      to={`courses/${courseId}`}
+      to={`courses/${courseId}${lessonId ? `/${lessonId}` : ''}`}
       className={`relative h-[379px] w-[271px] aspect-square overflow-hidden rounded-xl hover:opacity-50 backdrop-blur-lg transition-all duration-200`}
     >
       {imageSrc && (
