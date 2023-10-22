@@ -7,17 +7,18 @@ import {
   updateLesson,
 } from '../controllers/lessonController.js';
 import upload from '../middlewares/multerMiddleware.js';
+import { isDemoAccount } from '../middlewares/isAdminMiddleware.js';
 
 const router = Router();
 
 router
   .route('/:chapterId')
-  .post(upload.single('lesson'), createLesson)
+  .post(isDemoAccount, upload.single('lesson'), createLesson)
   .get(getAllLessons);
 router
   .route('/lesson/:lessonId')
   .get(getLesson)
-  .patch(updateLesson)
-  .delete(deleteLesson);
+  .patch(isDemoAccount, updateLesson)
+  .delete(isDemoAccount, deleteLesson);
 
 export default router;
