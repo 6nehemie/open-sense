@@ -12,7 +12,7 @@ const Hero = () => {
         <p className="text-xl text-light-gray font-light max-[900px]:text-lg max-md:text-base max-sm:text-sm">
           {hero.subText}
         </p>
-        <ActionBtn label="Become a member" href="plans" />
+        <ActionBtn label="Become a member" href="sign-up" />
       </div>
     </section>
   );

@@ -40,7 +40,7 @@ const SignUp = () => {
               type="text"
               // required={true}
               error={registerError?.name}
-              defaultValue="User Two"
+              // defaultValue="User Two"
               placeholder="Your name"
             />
 
@@ -48,7 +48,7 @@ const SignUp = () => {
               label="Your email address*"
               name="email"
               type="email"
-              defaultValue="nehemie.mbg@gmail.com"
+              // defaultValue="nehemie.mbg@gmail.com"
               error={registerError?.email}
               // required={true}
               placeholder="Your email address"
@@ -57,7 +57,7 @@ const SignUp = () => {
             <PasswordInput
               label="Your password*"
               name="password"
-              defaultValue="test1234"
+              // defaultValue="test1234"
               error={registerError?.password}
               // required={true}
               placeholder="Your password"
@@ -66,7 +66,7 @@ const SignUp = () => {
             <PasswordInput
               label="Password Confirm*"
               name="confirmPassword"
-              defaultValue="test1234"
+              // defaultValue="test1234"
               error={registerError?.confirmPassword}
               // required={true}
               placeholder="Password Confirm"
